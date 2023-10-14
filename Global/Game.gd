@@ -25,7 +25,7 @@ func tryRemoveSeeds(decrease) -> bool:
 signal noSeeds()
 signal seedCountChanged(seeds)
 
-@onready var CurrentPumpkins = 10 : 
+@onready var CurrentPumpkins = 0 : 
 	set (value):
 		CurrentPumpkins = value
 		pumpkinsCountChanged.emit(CurrentPumpkins)
@@ -44,7 +44,7 @@ func tryRemovePumpkins(decrease) -> bool:
 signal noPumpkins()
 signal pumpkinsCountChanged(pumpkins)
 
-@onready var CurrentCoins = 10 : 
+@onready var CurrentCoins = 0 : 
 	set (value):
 		CurrentCoins = value
 		coinsCountChanged.emit(CurrentCoins)

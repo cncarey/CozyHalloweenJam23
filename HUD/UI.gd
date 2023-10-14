@@ -24,7 +24,7 @@ extends CanvasLayer
 		if(PumpkinCount <= 0):
 			pass
 	get:
-		return SeedCount
+		return PumpkinCount
 		
 @onready var CoinCount = Game.CurrentCoins: 
 	set (value):
