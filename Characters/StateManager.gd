@@ -1,8 +1,8 @@
 class_name  StateManager
 
 var states = {
-	"idle" : IdleState,
-	"run" : RunState
+	"Idle" : IdleState,
+	"Run" : RunState
 }
 
 func getState(stateName: String):

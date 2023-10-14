@@ -5,29 +5,38 @@ class_name PersistentState
 var state
 var statageManager: StateManager
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
+@onready var aniTree = $AnimationTree
+@onready var aniState :AnimationNodeStateMachinePlayback = aniTree.get("parameters/playback")
 
 @export var speed: float = 100.0
 
 func _ready():
 	statageManager = StateManager.new()
-	changeState("idle")
+	changeState("Idle")
+	#animationPlayer.play("idleRight")
+	aniTree.active = true
+	aniState.travel("Idle")
 	
 func getInput():
 	if Input.is_action_just_pressed("left"):
-		print("l")
+		state.moveLeft()
 		pass
 	if Input.is_action_just_pressed("right"):
-		print("r")
+		state.moveRight()
 		pass
 	if Input.is_action_just_pressed("up"):
-		print("u")
+		state.moveUp()
 		pass
 	if Input.is_action_just_pressed("down"):
-		print("d")
+		state.moveDown()
 		pass	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
+	
+	if direction != Vector2.ZERO:
+		aniTree.set("parameters/Idle/blend_position", direction)
+		aniTree.set("parameters/Run/blend_position", direction)
 	
 	getInput()
 	velocity = direction.normalized() * speed
@@ -39,6 +48,8 @@ func changeState(newStateName: String):
 		state.queue_free()
 		
 	state = statageManager.getState(newStateName).new()
-	state.setup(Callable(self, "changeState"), animationPlayer, self)
+	state.setup(Callable(self, "changeState"), self)
+	aniState.travel(newStateName)
+	
 	state.name = str(newStateName)
 	add_child(state)
