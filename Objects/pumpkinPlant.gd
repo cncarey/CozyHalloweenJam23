@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 @onready var timer = $Timer
 @onready var plant = $plant
@@ -8,7 +8,7 @@ enum GrowingStage { seed = 0}
 @export var stage = 0
 
 func _ready():
-	timer.start()
+	timer.start(Game.GrowSpeed)
 	plant.frame = 101
 	
 func _process(_delta):
@@ -28,5 +28,5 @@ func _process(_delta):
 func goToNextStage():
 	if stage <= 5:
 		stage += 1
-		timer.start()
-	pass # Replace with function body.
+		timer.start(Game.GrowSpeed)
+	pass 

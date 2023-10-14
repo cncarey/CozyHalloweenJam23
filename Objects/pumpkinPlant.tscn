@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://byqb7llo22v8f"]
+[gd_scene load_steps=4 format=3 uid="uid://byqb7llo22v8f"]
 
 [ext_resource type="Script" path="res://Objects/pumpkinPlant.gd" id="1_liw3x"]
 [ext_resource type="Texture2D" uid="uid://bom6rgqmqegu3" path="res://Assets/Crop_Spritesheet.png" id="2_0t8of"]
 
-[node name="pumpkinPlant" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_lomiq"]
+radius = 12.0
+
+[node name="pumpkinPlant" type="Area2D"]
 script = ExtResource("1_liw3x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lomiq")
 
 [node name="plant" type="Sprite2D" parent="."]
 texture = ExtResource("2_0t8of")
