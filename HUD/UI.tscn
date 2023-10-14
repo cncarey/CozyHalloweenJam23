@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://oqa2r8sbrkdf"]
+[gd_scene load_steps=5 format=3 uid="uid://oqa2r8sbrkdf"]
 
+[ext_resource type="Script" path="res://HUD/UI.gd" id="1_8rctm"]
 [ext_resource type="Texture2D" uid="uid://bom6rgqmqegu3" path="res://Assets/Crop_Spritesheet.png" id="1_57wov"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mhpxq"]
 atlas = ExtResource("1_57wov")
 region = Rect2(79.8, 129.513, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6tj3"]
+atlas = ExtResource("1_57wov")
+region = Rect2(0.663479, 127.245, 14.8807, 16.9877)
+
 [node name="UI" type="CanvasLayer"]
+script = ExtResource("1_8rctm")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 40.0
@@ -14,13 +20,32 @@ offset_bottom = 40.0
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="AspectRatioContainer" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect"]
+layout_mode = 2
+offset_right = 108.0
+offset_bottom = 26.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="SeedsIcon" type="TextureRect" parent="MarginContainer/NinePatchRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_mhpxq")
 
-[node name="Seeds" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="Seeds" type="Label" parent="MarginContainer/NinePatchRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Seed Count"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="PumpkinIcon" type="TextureRect" parent="MarginContainer/NinePatchRect/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_k6tj3")
+
+[node name="Pumpkins" type="Label" parent="MarginContainer/NinePatchRect/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Pumkin Count"

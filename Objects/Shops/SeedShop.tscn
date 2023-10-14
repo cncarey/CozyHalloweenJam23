@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cy5iteyuvtu0t"]
+
+[ext_resource type="Script" path="res://Objects/Shops/SeedShop.gd" id="1_ncee4"]
+[ext_resource type="Texture2D" uid="uid://bskl74ytgdh42" path="res://Assets/Serene_Village_16x16.png" id="2_3uppf"]
+[ext_resource type="Texture2D" uid="uid://bom6rgqmqegu3" path="res://Assets/Crop_Spritesheet.png" id="3_gd238"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wijpg"]
+atlas = ExtResource("2_3uppf")
+region = Rect2(5.28395, 527.284, 69.9259, 60.8395)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih5w0"]
+atlas = ExtResource("3_gd238")
+region = Rect2(97.5018, 64.3108, 12.8395, 16.5926)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f118u"]
+radius = 14.0
+height = 50.0
+
+[node name="SeedShop" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_ncee4")
+
+[node name="Shop" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_wijpg")
+
+[node name="sign" type="Sprite2D" parent="."]
+position = Vector2(0, -19)
+texture = SubResource("AtlasTexture_ih5w0")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 3.5)
+polygon = PackedVector2Array(-9, -0.5, -8, 14.5, -29, 12.5, -29, -13.5, 28, -12.5, 29, 12.5, 9, 12.5, 9, -0.5)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 17)
+shape = SubResource("CapsuleShape2D_f118u")
+
+[connection signal="body_entered" from="Area2D" to="." method="doorEntered"]
+[connection signal="body_exited" from="Area2D" to="." method="doorExited"]

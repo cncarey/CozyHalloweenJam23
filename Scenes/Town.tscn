@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://8it56ewx83vg"]
+[gd_scene load_steps=16 format=3 uid="uid://8it56ewx83vg"]
 
 [ext_resource type="Texture2D" uid="uid://cr3tvn2756hrv" path="res://Assets/SmallBurg_village_pack_v3.2_free/assets/tileset/terrain/smallburg_spring_terrain.png" id="1_04875"]
 [ext_resource type="Script" path="res://Scenes/TownCamera2D.gd" id="1_d00tp"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dox1meks3jqvw" path="res://Characters/player.tscn" id="4_a07uq"]
 [ext_resource type="Texture2D" uid="uid://bskl74ytgdh42" path="res://Assets/Serene_Village_16x16.png" id="4_eas7j"]
 [ext_resource type="PackedScene" uid="uid://dme635lqpjprv" path="res://Objects/DirtPatch.tscn" id="9_7lbad"]
+[ext_resource type="PackedScene" uid="uid://cy5iteyuvtu0t" path="res://Objects/Shops/SeedShop.tscn" id="10_eatdb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0gymp"]
 texture = ExtResource("1_04875")
@@ -14504,3 +14505,6 @@ position = Vector2(153.651, 21.0025)
 
 [node name="DirtPatch15" parent="plants" instance=ExtResource("9_7lbad")]
 position = Vector2(153.404, 68.8212)
+
+[node name="SeedShop" parent="." instance=ExtResource("10_eatdb")]
+position = Vector2(356, 376)

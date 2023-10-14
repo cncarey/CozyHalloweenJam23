@@ -20,4 +20,6 @@ frame = 101
 
 [node name="Timer" type="Timer" parent="."]
 
+[connection signal="body_entered" from="." to="." method="plantEntered"]
+[connection signal="body_exited" from="." to="." method="plantExited"]
 [connection signal="timeout" from="Timer" to="." method="goToNextStage"]

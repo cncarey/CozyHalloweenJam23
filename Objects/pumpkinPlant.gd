@@ -6,6 +6,9 @@ extends Area2D
 enum GrowingStage { seed = 0}
 
 @export var stage = 0
+var isTouching: bool = false
+
+signal Harvested()
 
 func _ready():
 	timer.start(Game.GrowSpeed)
@@ -30,3 +33,20 @@ func goToNextStage():
 		stage += 1
 		timer.start(Game.GrowSpeed)
 	pass 
+	
+
+func plantEntered(body):
+	isTouching = true
+	#TouchIndicator.show()
+	pass # Replace with function body.
+
+func plantExited(body):
+	isTouching = false
+	#TouchIndicator.hide()
+	pass
+	
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("interact") && isTouching && stage >= 4:
+		Game.CurrentPumpkins += 1
+		Harvested.emit()
+		queue_free()
