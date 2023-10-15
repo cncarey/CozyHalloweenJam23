@@ -1,7 +1,8 @@
 extends CanvasLayer
 
-@onready var SeedLabel = $MarginContainer/NinePatchRect/VBoxContainer/HBoxContainer/Seeds
-@onready var PumpkinLabel = $MarginContainer/NinePatchRect/VBoxContainer/HBoxContainer2/Pumpkins
+@onready var SeedLabel = $MarginContainer/MarginContainer/VBoxContainer/SeedHCB/Seeds
+@onready var PumpkinLabel = $MarginContainer/MarginContainer/VBoxContainer/PumpkinHCB/Pumpkins
+@onready var CoinLabel = $MarginContainer/MarginContainer/VBoxContainer/CoinHCB/Coins
 
 		
 @onready var SeedCount = Game.CurrentSeeds: 
@@ -29,8 +30,8 @@ extends CanvasLayer
 @onready var CoinCount = Game.CurrentCoins: 
 	set (value):
 		CoinCount = value
-		#if SeedLabel != null:
-			#SeedLabel.text = str(CoinCount)
+		if CoinLabel != null:
+			CoinLabel.text = str(CoinCount)
 		
 		if(CoinCount <= 0):
 			pass
@@ -40,12 +41,17 @@ extends CanvasLayer
 func _ready():
 	SeedCount = Game.CurrentSeeds
 	PumpkinCount = Game.CurrentPumpkins
+	CoinCount = Game.CurrentCoins
 	
 	Game.connect("seedCountChanged",setSeedCount)
 	Game.connect("pumpkinsCountChanged",setPumpkinCount)
+	Game.connect("coinsCountChanged", setCoinCount)
 
 func setSeedCount(sc):
 	SeedCount = sc
 
 func setPumpkinCount(pc):
 	PumpkinCount = pc
+
+func setCoinCount(cc):
+	CoinCount = cc

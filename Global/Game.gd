@@ -5,6 +5,7 @@ var Plot
 var Harvests
 
 var GrowSpeed = 3
+var PumpkinDesireLevel = 8
 
 @onready var CurrentSeeds = 10 : 
 	set (value):

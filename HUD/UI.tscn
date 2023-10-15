@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://oqa2r8sbrkdf"]
+[gd_scene load_steps=8 format=3 uid="uid://oqa2r8sbrkdf"]
 
 [ext_resource type="Script" path="res://HUD/UI.gd" id="1_8rctm"]
 [ext_resource type="Texture2D" uid="uid://bom6rgqmqegu3" path="res://Assets/Crop_Spritesheet.png" id="1_57wov"]
+[ext_resource type="Texture2D" uid="uid://sshr7a13v5hi" path="res://Assets/BiomeClearBoarder.png" id="2_087v1"]
+[ext_resource type="Texture2D" uid="uid://pqfcgnysbnwb" path="res://Assets/Sprite sheet for Basic Pack.png" id="4_phjrd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mhpxq"]
 atlas = ExtResource("1_57wov")
@@ -10,6 +12,10 @@ region = Rect2(79.8, 129.513, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_k6tj3"]
 atlas = ExtResource("1_57wov")
 region = Rect2(0.663479, 127.245, 14.8807, 16.9877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ibjk"]
+atlas = ExtResource("4_phjrd")
+region = Rect2(623, 64, 16, 16)
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_8rctm")
@@ -22,30 +28,51 @@ theme_override_constants/margin_top = 15
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
 layout_mode = 2
+texture = ExtResource("2_087v1")
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
-offset_right = 108.0
-offset_bottom = 26.0
+theme_override_constants/margin_left = 9
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 9
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/NinePatchRect/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="SeedsIcon" type="TextureRect" parent="MarginContainer/NinePatchRect/VBoxContainer/HBoxContainer"]
+[node name="SeedHCB" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SeedsIcon" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/SeedHCB"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_mhpxq")
 
-[node name="Seeds" type="Label" parent="MarginContainer/NinePatchRect/VBoxContainer/HBoxContainer"]
+[node name="Seeds" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/SeedHCB"]
 layout_mode = 2
 text = "Seed Count"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/NinePatchRect/VBoxContainer"]
+[node name="PumpkinHCB" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="PumpkinIcon" type="TextureRect" parent="MarginContainer/NinePatchRect/VBoxContainer/HBoxContainer2"]
+[node name="PumpkinIcon" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/PumpkinHCB"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_k6tj3")
 
-[node name="Pumpkins" type="Label" parent="MarginContainer/NinePatchRect/VBoxContainer/HBoxContainer2"]
+[node name="Pumpkins" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/PumpkinHCB"]
 layout_mode = 2
 text = "Pumkin Count"
+
+[node name="CoinHCB" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CoinIcon" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/CoinHCB"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_8ibjk")
+
+[node name="Coins" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/CoinHCB"]
+layout_mode = 2
+text = "Coin Count"

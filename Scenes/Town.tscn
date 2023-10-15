@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://8it56ewx83vg"]
+[gd_scene load_steps=17 format=3 uid="uid://8it56ewx83vg"]
 
 [ext_resource type="Texture2D" uid="uid://cr3tvn2756hrv" path="res://Assets/SmallBurg_village_pack_v3.2_free/assets/tileset/terrain/smallburg_spring_terrain.png" id="1_04875"]
 [ext_resource type="Script" path="res://Scenes/TownCamera2D.gd" id="1_d00tp"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bskl74ytgdh42" path="res://Assets/Serene_Village_16x16.png" id="4_eas7j"]
 [ext_resource type="PackedScene" uid="uid://dme635lqpjprv" path="res://Objects/DirtPatch.tscn" id="9_7lbad"]
 [ext_resource type="PackedScene" uid="uid://cy5iteyuvtu0t" path="res://Objects/Shops/SeedShop.tscn" id="10_eatdb"]
+[ext_resource type="PackedScene" uid="uid://bfbvbm8knujhl" path="res://Characters/NPC.tscn" id="11_pfaum"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0gymp"]
 texture = ExtResource("1_04875")
@@ -14508,3 +14509,17 @@ position = Vector2(153.404, 68.8212)
 
 [node name="SeedShop" parent="." instance=ExtResource("10_eatdb")]
 position = Vector2(356, 376)
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="NPC" parent="NPCs" instance=ExtResource("11_pfaum")]
+position = Vector2(647, 242)
+
+[node name="NPC2" parent="NPCs" instance=ExtResource("11_pfaum")]
+position = Vector2(761, 245)
+
+[node name="NPC3" parent="NPCs" instance=ExtResource("11_pfaum")]
+position = Vector2(761, 342)
+
+[node name="NPC4" parent="NPCs" instance=ExtResource("11_pfaum")]
+position = Vector2(506, 436)
