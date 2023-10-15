@@ -16,7 +16,6 @@ texture = ExtResource("2_77rjt")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 layout_direction = 1
-anchors_preset = -1
 offset_left = 626.524
 offset_top = 372.838
 offset_right = 837.524

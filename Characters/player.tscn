@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://dox1meks3jqvw"]
+[gd_scene load_steps=28 format=3 uid="uid://dox1meks3jqvw"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_eo46r"]
 [ext_resource type="Texture2D" uid="uid://bigg5ays34bha" path="res://Assets/MainPlayer.png" id="2_p0a4h"]
 [ext_resource type="AudioStream" uid="uid://lrtdjnunn3rl" path="res://Assets/Sounds/FootstepsGrass.ogg" id="3_aioqt"]
+[ext_resource type="Texture2D" uid="uid://cmiqn2sutwkmx" path="res://Assets/moon_light.png" id="4_05yv6"]
 
 [sub_resource type="Animation" id="Animation_qje10"]
 length = 0.001
@@ -267,3 +268,8 @@ bus = &"SoundFx"
 
 [node name="StepTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.25
+texture = ExtResource("4_05yv6")
+texture_scale = 0.2

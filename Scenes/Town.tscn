@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://8it56ewx83vg"]
+[gd_scene load_steps=27 format=3 uid="uid://8it56ewx83vg"]
 
 [ext_resource type="Texture2D" uid="uid://cr3tvn2756hrv" path="res://Assets/SmallBurg_village_pack_v3.2_free/assets/tileset/terrain/smallburg_spring_terrain.png" id="1_04875"]
 [ext_resource type="Script" path="res://Scenes/TownCamera2D.gd" id="1_d00tp"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dme635lqpjprv" path="res://Objects/DirtPatch.tscn" id="9_7lbad"]
 [ext_resource type="PackedScene" uid="uid://cy5iteyuvtu0t" path="res://Objects/Shops/SeedShop.tscn" id="10_eatdb"]
 [ext_resource type="PackedScene" uid="uid://bfbvbm8knujhl" path="res://Characters/NPC.tscn" id="11_pfaum"]
+[ext_resource type="PackedScene" uid="uid://du23qmghlggxu" path="res://Scenes/TimeOfDay.tscn" id="14_4u3f7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0gymp"]
 texture = ExtResource("1_04875")
@@ -14524,6 +14525,7 @@ y_sort_enabled = true
 script = ExtResource("1_s17g5")
 
 [node name="Pause" parent="." instance=ExtResource("2_00dy1")]
+visible = false
 
 [node name="UI" parent="." instance=ExtResource("1_g62k7")]
 
@@ -14674,3 +14676,5 @@ offset_top = 170.038
 offset_right = 128.32
 offset_bottom = 196.038
 text = "To Move"
+
+[node name="TimeOfDay" parent="." instance=ExtResource("14_4u3f7")]

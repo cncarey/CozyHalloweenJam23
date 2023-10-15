@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://oqa2r8sbrkdf"]
+[gd_scene load_steps=12 format=3 uid="uid://oqa2r8sbrkdf"]
 
 [ext_resource type="Script" path="res://HUD/UI.gd" id="1_8rctm"]
 [ext_resource type="Texture2D" uid="uid://bom6rgqmqegu3" path="res://Assets/Crop_Spritesheet.png" id="1_57wov"]
 [ext_resource type="Texture2D" uid="uid://sshr7a13v5hi" path="res://Assets/BiomeClearBoarder.png" id="2_087v1"]
+[ext_resource type="Texture2D" uid="uid://dmpb8bepuwqqr" path="res://Assets/brightness-high.svg" id="2_bwkqd"]
+[ext_resource type="Texture2D" uid="uid://1fo5gc2vix0c" path="res://Assets/sunset.svg" id="3_5h1ik"]
+[ext_resource type="Texture2D" uid="uid://d0tuhwurvmfck" path="res://Assets/moon-fill.svg" id="4_8akpb"]
 [ext_resource type="Texture2D" uid="uid://pqfcgnysbnwb" path="res://Assets/Sprite sheet for Basic Pack.png" id="4_phjrd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mhpxq"]
@@ -17,16 +20,27 @@ region = Rect2(0.663479, 127.245, 14.8807, 16.9877)
 atlas = ExtResource("4_phjrd")
 region = Rect2(623, 64, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmrnx"]
+atlas = ExtResource("4_phjrd")
+region = Rect2(503.798, 149.198, 35.358, 23.2149)
+filter_clip = true
+
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_8rctm")
+dayTexture = ExtResource("2_bwkqd")
+eveningTexture = ExtResource("3_5h1ik")
+nightTexture = ExtResource("4_8akpb")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("2_087v1")
 patch_margin_left = 7
@@ -34,45 +48,74 @@ patch_margin_top = 7
 patch_margin_right = 7
 patch_margin_bottom = 7
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 9
 theme_override_constants/margin_top = 9
 theme_override_constants/margin_right = 9
 theme_override_constants/margin_bottom = 9
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="SeedHCB" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+[node name="SeedHCB" type="HBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="SeedsIcon" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/SeedHCB"]
+[node name="SeedsIcon" type="TextureRect" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/SeedHCB"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_mhpxq")
 
-[node name="Seeds" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/SeedHCB"]
+[node name="Seeds" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/SeedHCB"]
 layout_mode = 2
 text = "Seed Count"
 
-[node name="PumpkinHCB" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+[node name="PumpkinHCB" type="HBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="PumpkinIcon" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/PumpkinHCB"]
+[node name="PumpkinIcon" type="TextureRect" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/PumpkinHCB"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_k6tj3")
 
-[node name="Pumpkins" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/PumpkinHCB"]
+[node name="Pumpkins" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/PumpkinHCB"]
 layout_mode = 2
 text = "Pumkin Count"
 
-[node name="CoinHCB" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+[node name="CoinHCB" type="HBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="CoinIcon" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/CoinHCB"]
+[node name="CoinIcon" type="TextureRect" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/CoinHCB"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_8ibjk")
 
-[node name="Coins" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/CoinHCB"]
+[node name="Coins" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/CoinHCB"]
 layout_mode = 2
 text = "Coin Count"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = -6
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_tmrnx")
+region_rect = Rect2(0, 0, 36, 24)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 13
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="TimeOfDayIcon" type="TextureRect" parent="VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TimeOfDayLabel" type="Label" parent="VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Day"

@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://du23qmghlggxu"]
+
+[ext_resource type="Script" path="res://Scenes/TimeOfDay.gd" id="1_4s7hv"]
+
+[sub_resource type="Animation" id="Animation_t3phh"]
+resource_name = "NightToDay"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.513726, 0.427451, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2rifd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.513726, 0.427451, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_m2f4h"]
+resource_name = "DayToEvening"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.721569, 0.709804, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7tb78"]
+resource_name = "EveningToNight"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.721569, 0.709804, 1, 1), Color(0.513726, 0.427451, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wnlil"]
+_data = {
+"DayToEvening": SubResource("Animation_m2f4h"),
+"EveningToNight": SubResource("Animation_7tb78"),
+"NightToDay": SubResource("Animation_t3phh"),
+"RESET": SubResource("Animation_2rifd")
+}
+
+[node name="TimeOfDay" type="Node2D"]
+script = ExtResource("1_4s7hv")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.513726, 0.427451, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wnlil")
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="setTimeOfDay"]

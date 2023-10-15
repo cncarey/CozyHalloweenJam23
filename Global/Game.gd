@@ -1,5 +1,6 @@
 extends Node
 
+
 var CurrentDay
 var Plot
 var Harvests
@@ -9,6 +10,16 @@ var PumpkinDesireLevel = 2
 var MinShopSeeds = 10
 var MaxShopSeeds = 15
 
+enum TimeOfDay {Day, Evening, Night}
+@onready var CurrentTimeOfDay : TimeOfDay = TimeOfDay.Day:
+	set (value):
+		CurrentTimeOfDay = value
+		CurrentTimeOfDayChanged.emit(CurrentTimeOfDay)
+	get:
+		return CurrentTimeOfDay
+		
+signal CurrentTimeOfDayChanged(tod)
+		
 @onready var CurrentSeeds = 10 : 
 	set (value):
 		CurrentSeeds = value

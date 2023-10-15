@@ -13,12 +13,17 @@ var statageManager: StateManager
 
 @export var speed: float = 100.0
 
+@export var isLite : bool = false
+@onready var light : PointLight2D = $PointLight2D
+
 func _ready():
 	statageManager = StateManager.new()
 	changeState("Idle")
-	#animationPlayer.play("idleRight")
 	aniTree.active = true
 	aniState.travel("Idle")
+	
+	setTimeOfDay(Game.CurrentTimeOfDay)
+	Game.connect("CurrentTimeOfDayChanged",setTimeOfDay)
 	
 func getInput():
 	if Input.is_action_just_pressed("left"):
@@ -66,3 +71,15 @@ func changeState(newStateName: String):
 	
 	state.name = str(newStateName)
 	add_child(state)
+
+
+func setTimeOfDay(tod):
+	#TODO put on your halloween costume if you have unlocked it
+	match tod:
+		Game.TimeOfDay.Day:
+			light.enabled = false
+		Game.TimeOfDay.Night:
+			light.enabled = true
+		Game.TimeOfDay.Evening:
+			light.enabled = true
+		

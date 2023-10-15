@@ -43,10 +43,24 @@ func _ready():
 	ani.play( str(skin) + "_idle")
 	pumkinNotif.play("default")
 	
-	resetDay()
+	setTimeOfDay(Game.CurrentTimeOfDay)
+	Game.connect("CurrentTimeOfDayChanged",setTimeOfDay)
+	
+func setTimeOfDay(tod):
+	match tod:
+		Game.TimeOfDay.Day:
+			resetDay()
+		Game.TimeOfDay.Night:
+			
+			pass
+		Game.TimeOfDay.Evening:
+			#TODO If the trick-or- treat skill is unlocked
+			# set the use costume flag to true
+			pass
+		
+	pass	
 
 func resetDay():
-	#TODO connect to day/night cycle change
 	hasPumpkin = false
 	pumkinNotif.hide()
 	
