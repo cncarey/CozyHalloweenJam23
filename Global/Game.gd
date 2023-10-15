@@ -6,6 +6,8 @@ var Harvests
 
 var GrowSpeed = 3
 var PumpkinDesireLevel = 2
+var MinShopSeeds = 10
+var MaxShopSeeds = 15
 
 @onready var CurrentSeeds = 10 : 
 	set (value):

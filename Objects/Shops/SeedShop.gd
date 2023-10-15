@@ -17,6 +17,9 @@ func tryRemoveSeeds(decrease) -> bool:
 	else:
 		CurrentSeeds -= decrease
 		return true
+		
+func resetDay():
+		CurrentSeeds = randi_range(Game.MinShopSeeds, Game.MaxShopSeeds)	
 
 func doorEntered(_body):
 	isTouching = true

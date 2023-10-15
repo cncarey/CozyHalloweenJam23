@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7esqv2uuvw5m"]
+
+[ext_resource type="Script" path="res://HUD/Pause.gd" id="1_kv4mq"]
+
+[node name="Pause" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_kv4mq")
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -83.0
+offset_right = 46.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Paused" type="Label" parent="MainContainer"]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="MainContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Options" type="Button" parent="MainContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Skill Tree" type="Button" parent="MainContainer"]
+layout_mode = 2
+text = "Skill Tree"
+
+[node name="Quit" type="Button" parent="MainContainer"]
+layout_mode = 2
+text = "Quit Game"
+
+[node name="OptionsContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SkillsTreeContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="MainContainer/Resume" to="." method="resumePressed"]
+[connection signal="pressed" from="MainContainer/Options" to="." method="showOptions"]
+[connection signal="pressed" from="MainContainer/Skill Tree" to="." method="showSkillsTree"]
+[connection signal="pressed" from="MainContainer/Quit" to="." method="quitPressed"]
