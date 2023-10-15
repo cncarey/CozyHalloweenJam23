@@ -8,6 +8,9 @@ var statageManager: StateManager
 @onready var aniTree = $AnimationTree
 @onready var aniState :AnimationNodeStateMachinePlayback = aniTree.get("parameters/playback")
 
+@onready var grassSteps : AudioStreamPlayer = $GrassSteps
+@onready var stepTimer: Timer = $StepTimer
+
 @export var speed: float = 100.0
 
 func _ready():
@@ -37,6 +40,16 @@ func _physics_process(_delta):
 	if direction != Vector2.ZERO:
 		aniTree.set("parameters/Idle/blend_position", direction)
 		aniTree.set("parameters/Run/blend_position", direction)
+		
+		if stepTimer.time_left <= 0:
+			grassSteps.pitch_scale = randf_range(0.8, 1.2)
+			grassSteps.play(0.5)
+			stepTimer.start(2)
+			pass
+	else:
+		#velocity = Vector2.ZERO
+		grassSteps.stop()
+		stepTimer.stop()
 	
 	getInput()
 	velocity = direction.normalized() * speed

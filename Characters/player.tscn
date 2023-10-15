@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://dox1meks3jqvw"]
+[gd_scene load_steps=27 format=3 uid="uid://dox1meks3jqvw"]
 
 [ext_resource type="Script" path="res://Characters/player.gd" id="1_eo46r"]
 [ext_resource type="Texture2D" uid="uid://bigg5ays34bha" path="res://Assets/MainPlayer.png" id="2_p0a4h"]
+[ext_resource type="AudioStream" uid="uid://lrtdjnunn3rl" path="res://Assets/Sounds/FootstepsGrass.ogg" id="3_aioqt"]
 
 [sub_resource type="Animation" id="Animation_qje10"]
 length = 0.001
@@ -258,3 +259,11 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_k8njv")
 parameters/Idle/blend_position = Vector2(-0.258152, 0.165875)
 parameters/Run/blend_position = Vector2(0, 1.06083)
+
+[node name="GrassSteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_aioqt")
+volume_db = -10.0
+bus = &"SoundFx"
+
+[node name="StepTimer" type="Timer" parent="."]
+one_shot = true

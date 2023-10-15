@@ -9,6 +9,10 @@ extends CanvasLayer
 @onready var music_bus :int = AudioServer.get_bus_index("Music")
 @onready var sfx_bus :int = AudioServer.get_bus_index("SoundFx")
 
+#sliders
+@onready var masterSlider : HSlider = $OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MasterSlider
+@onready var musicSlider: HSlider = $OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MusicSlider
+@onready var sFxSlider: HSlider = $OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SFxSlider
 signal pauseChanged(state)
 
 func _ready():
@@ -17,17 +21,17 @@ func _ready():
 		
 	var curMaster : int= AudioServer.get_bus_volume_db(master_bus)
 	if curMaster != null:
-		#masterSlider.value = curMaster
+		masterSlider.value = curMaster
 		pass
 	
 	var curMusic : int= AudioServer.get_bus_volume_db(music_bus)
 	if curMusic != null:
-		#musicSlider.value = curMusic
+		musicSlider.value = curMusic
 		pass
 		
 	var curSfx : int= AudioServer.get_bus_volume_db(sfx_bus)
 	if curSfx != null:
-		#soundFxSlider.value = curSfx
+		sFxSlider.value = curSfx
 		pass
 		
 		
@@ -65,7 +69,7 @@ func showOptions():
 	pass
 	
 
-func masterVolumeChanged(value):
+func masterVolumeChanged(value: float):
 	AudioServer.set_bus_volume_db(master_bus, value)
 	
 	if value == -30:
@@ -74,7 +78,7 @@ func masterVolumeChanged(value):
 		AudioServer.set_bus_mute(master_bus, false)
 	pass
 	
-func musicVolumeChanged(value):
+func musicVolumeChanged(value: float):
 	AudioServer.set_bus_volume_db(music_bus, value)
 	
 	if value == -30:
@@ -83,7 +87,7 @@ func musicVolumeChanged(value):
 		AudioServer.set_bus_mute(music_bus, false)
 	pass
 	
-func sfxVolumeChanged(value):
+func sfxVolumeChanged(value: float):
 	AudioServer.set_bus_volume_db(sfx_bus, value)
 	
 	if value == -30:
