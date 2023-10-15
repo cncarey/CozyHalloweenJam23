@@ -6,22 +6,54 @@ enum AIState{ NONE, IDLE, WANDER, SEESPLAYER}
 @export var acceleration = 50
 
 @onready var ani = $AnimatedSprite2D
+@onready var pumkinNotif = $AnimatedSprite2D2
 
 @onready var wanderController = $WanderController
 @onready var playerDetection = $PlayerDetectionZones
+var isTouching: bool = false
+
 var skin: int = 1
-var wantsPumpkinToday : bool = false
+
+signal PurchasedPumpkin()
+
+@onready var wantsPumpkinToday: bool = false: 
+	set (value):
+		wantsPumpkinToday = value
+		
+		if wantsPumpkinToday && pumkinNotif != null:
+			pumkinNotif.show()
+			pass
+	get:
+		return wantsPumpkinToday
+
+@onready var hasPumpkin: bool = false: 
+	set (value):
+		hasPumpkin = value
+		
+		if hasPumpkin  && pumkinNotif != null:
+			pumkinNotif.hide()
+			pass
+	get:
+		return hasPumpkin
 
 func _ready():
 	randomize()
-	skin = randi_range(1, 4)
+	skin = randi_range(1, 9)
 	#pick a random number to determine the npc skin
 	ani.play( str(skin) + "_idle")
+	pumkinNotif.play("default")
 	
 	resetDay()
 
 func resetDay():
-	#TODO	determin if the users want a pumpkin today
+	#TODO connect to day/night cycle change
+	hasPumpkin = false
+	pumkinNotif.hide()
+	
+	var wantsPumpkin = randi_range(1, Game.PumpkinDesireLevel)
+	wantsPumpkinToday = wantsPumpkin == 1
+	
+	print(str(skin) + ": " + str(wantsPumpkinToday))
 	pass
 
 func _physics_process(delta):
@@ -65,7 +97,7 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-func moveToPoint(point: Vector2, delta):
+func moveToPoint(point: Vector2, _delta):
 	var direction = (self.global_position- Vector2(0, 15)).direction_to(point).normalized()
 	velocity = direction * acceleration
 	pass
@@ -86,5 +118,19 @@ func pickRandomState(_states):
 
 func setRandomState():
 	state = pickRandomState([AIState.IDLE, AIState.WANDER])
-	print(state)
 	wanderController.startTimer(randi_range(1, 5))
+
+func npcEntered(_body):
+	isTouching = true
+	pass 
+
+func npcExited(_body):
+	isTouching = false
+	pass
+
+func _unhandled_input(_event):
+	if Input.is_action_just_pressed("interact") && isTouching && Game.CurrentPumpkins > 0 && wantsPumpkinToday && !hasPumpkin:
+		if Game.tryRemovePumpkins(1):
+			hasPumpkin = true
+			Game.CurrentCoins += 30
+			PurchasedPumpkin.emit()

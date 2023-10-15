@@ -35,17 +35,17 @@ func goToNextStage():
 	pass 
 	
 
-func plantEntered(body):
+func plantEntered(_body):
 	isTouching = true
 	#TouchIndicator.show()
 	pass # Replace with function body.
 
-func plantExited(body):
+func plantExited(_body):
 	isTouching = false
 	#TouchIndicator.hide()
 	pass
 	
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("interact") && isTouching && stage >= 4:
 		Game.CurrentPumpkins += 1
 		Harvested.emit()

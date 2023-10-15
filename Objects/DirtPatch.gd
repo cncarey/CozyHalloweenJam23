@@ -6,18 +6,18 @@ var hasSeed: bool = false
 var pumpkinPlant = preload("res://Objects/pumpkinPlant.tscn")
 @onready var point = $Marker2D
 
-func patchEntered(body):
+func patchEntered(_body):
 	isTouching = true
 	#TODO only show if !hasSeed
 	#TouchIndicator.show()
 	pass # Replace with function body.
 
-func patchExited(body):
+func patchExited(_body):
 	isTouching = false
 	#TouchIndicator.hide()
 	pass
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("interact") && isTouching && !hasSeed:
 		if Game.tryRemoveSeeds(1):
 			hasSeed = true

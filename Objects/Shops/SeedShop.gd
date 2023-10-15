@@ -18,17 +18,17 @@ func tryRemoveSeeds(decrease) -> bool:
 		CurrentSeeds -= decrease
 		return true
 
-func doorEntered(body):
+func doorEntered(_body):
 	isTouching = true
 	#TouchIndicator.show()
 	pass # Replace with function body.
 
-func doorExited(body):
+func doorExited(_body):
 	isTouching = false
 	#TouchIndicator.hide()
 	pass
 	
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("interact") && isTouching:
 		var _cur = CurrentSeeds
 		if tryRemoveSeeds(_cur):

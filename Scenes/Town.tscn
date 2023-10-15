@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://8it56ewx83vg"]
+[gd_scene load_steps=23 format=3 uid="uid://8it56ewx83vg"]
 
 [ext_resource type="Texture2D" uid="uid://cr3tvn2756hrv" path="res://Assets/SmallBurg_village_pack_v3.2_free/assets/tileset/terrain/smallburg_spring_terrain.png" id="1_04875"]
 [ext_resource type="Script" path="res://Scenes/TownCamera2D.gd" id="1_d00tp"]
@@ -14419,6 +14419,29 @@ sources/1 = SubResource("TileSetAtlasSource_nmlof")
 sources/2 = SubResource("TileSetAtlasSource_dmxk6")
 sources/3 = SubResource("TileSetAtlasSource_yllis")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uklxf"]
+load_path = "res://.godot/imported/tilemap_white_packed.png-53641939dabcd364935c2e6e82247279.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2sdh"]
+atlas = SubResource("CompressedTexture2D_uklxf")
+region = Rect2(304.688, 32.8751, 13.4321, 13.4321)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxrub"]
+atlas = SubResource("CompressedTexture2D_uklxf")
+region = Rect2(289.362, 33.1354, 12.642, 13.037)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffudi"]
+atlas = SubResource("CompressedTexture2D_uklxf")
+region = Rect2(288.925, 48.8829, 13.037, 13.3004)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kagfd"]
+atlas = SubResource("CompressedTexture2D_uklxf")
+region = Rect2(305.038, 49.0197, 13.037, 12.9053)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32gxk"]
+atlas = SubResource("CompressedTexture2D_uklxf")
+region = Rect2(321.021, 49.1512, 13.1687, 12.9053)
+
 [node name="Town" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_s17g5")
@@ -14451,7 +14474,7 @@ layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = true
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array(1245232, 458755, 18, 1245230, 458755, 18, 1245225, 393219, 18, 1245223, 393219, 18, 393222, 262147, 18, 655366, 524291, 17, 65538, 589827, 12, 131074, 589827, 12, 65539, 589827, 12, 131075, 589827, 12, 196632, 589827, 12, 1114116, 589827, 12, 1310738, 589827, 12, 1376284, 589827, 12, 852001, 589827, 12, 524320, 589827, 12, 786459, 589827, 12, 786451, 589827, 12, 655363, 524291, 13)
+layer_2/tile_data = PackedInt32Array(1245232, 458755, 18, 1245230, 458755, 18, 1245225, 393219, 18, 1245223, 393219, 18, 393222, 262147, 18, 65538, 589827, 12, 131074, 589827, 12, 65539, 589827, 12, 131075, 589827, 12, 196632, 589827, 12, 1114116, 589827, 12, 1310738, 589827, 12, 1376284, 589827, 12, 852001, 589827, 12, 524320, 589827, 12, 786459, 589827, 12, 786451, 589827, 12, 786435, 524291, 13, 786438, 524291, 17)
 
 [node name="player" parent="." instance=ExtResource("4_a07uq")]
 position = Vector2(79.8699, 137.915)
@@ -14523,3 +14546,39 @@ position = Vector2(761, 342)
 
 [node name="NPC4" parent="NPCs" instance=ExtResource("11_pfaum")]
 position = Vector2(506, 436)
+
+[node name="Node" type="Node2D" parent="."]
+
+[node name="E" type="Sprite2D" parent="Node"]
+position = Vector2(38, 131)
+texture = SubResource("AtlasTexture_u2sdh")
+
+[node name="Interact" type="Label" parent="Node"]
+offset_left = 47.0
+offset_top = 119.0
+offset_right = 131.0
+offset_bottom = 145.0
+text = "To interact"
+
+[node name="W" type="Sprite2D" parent="Node"]
+position = Vector2(74.9384, 149.082)
+texture = SubResource("AtlasTexture_fxrub")
+
+[node name="A" type="Sprite2D" parent="Node"]
+position = Vector2(58.5841, 164.938)
+texture = SubResource("AtlasTexture_ffudi")
+
+[node name="S" type="Sprite2D" parent="Node"]
+position = Vector2(74.9417, 164.931)
+texture = SubResource("AtlasTexture_kagfd")
+
+[node name="D" type="Sprite2D" parent="Node"]
+position = Vector2(91.4231, 164.56)
+texture = SubResource("AtlasTexture_32gxk")
+
+[node name="Move" type="Label" parent="Node"]
+offset_left = 44.3197
+offset_top = 170.038
+offset_right = 128.32
+offset_bottom = 196.038
+text = "To Move"
