@@ -14535,7 +14535,6 @@ tilemap = NodePath("../TileMap")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
-position = Vector2(0, 22)
 tile_set = SubResource("TileSet_67f2e")
 collision_animatable = true
 format = 2
