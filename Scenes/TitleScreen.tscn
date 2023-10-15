@@ -1,28 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5np5yl8c16kw"]
+[gd_scene load_steps=3 format=3 uid="uid://b5np5yl8c16kw"]
 
 [ext_resource type="Script" path="res://Scenes/TitleScreen.gd" id="1_75oxg"]
+[ext_resource type="Texture2D" uid="uid://cimfv1a2io7rc" path="res://Assets/KeyArt.png" id="2_77rjt"]
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_75oxg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 1364.0
+offset_bottom = 798.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_77rjt")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.5
-offset_top = -15.5
-offset_right = 20.5
-offset_bottom = 15.5
+layout_direction = 1
+anchors_preset = -1
+offset_left = 626.524
+offset_top = 372.838
+offset_right = 837.524
+offset_bottom = 412.838
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Play"
 
