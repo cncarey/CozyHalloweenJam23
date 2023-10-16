@@ -1,10 +1,5 @@
 extends Node
 
-
-var CurrentDay
-var Plot
-var Harvests
-
 var GrowSpeed = 3
 var PumpkinDesireLevel = 2
 var MinShopSeeds = 10
@@ -76,3 +71,9 @@ func tryRemoveCoins(decrease) -> bool:
 
 signal noCoins()
 signal coinsCountChanged(coins)
+
+func reset():
+	self.CurrentCoins = 0
+	self.CurrentPumpkins = 0
+	self.CurrentSeeds = 10
+	self.CurrentTimeOfDay = TimeOfDay.Day

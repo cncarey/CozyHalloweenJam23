@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxgatpplm4rgv"]
+
+[ext_resource type="PackedScene" uid="uid://defx6wlu4icmm" path="res://HUD/SkillButton.tscn" id="1_rkbsh"]
+
+[node name="SkillTree" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SkillButton" parent="." instance=ExtResource("1_rkbsh")]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 431.0
+offset_right = 604.0
+offset_bottom = 559.0
+tooltip_text = "Add Pumpkins
+1 - Your house
+2 - The town
+3 - Town Square"
+
+[node name="SkillButton2" parent="SkillButton" instance=ExtResource("1_rkbsh")]
+layout_mode = 0
+offset_left = 328.0
+offset_top = -63.0
+offset_right = 456.0
+offset_bottom = 65.0
+tooltip_text = "Add Costumes
+1 - Neighbors
+2  - You "
+disabled = true
+maxLevel = 2
+
+[node name="SkillButton3" parent="SkillButton" instance=ExtResource("1_rkbsh")]
+layout_mode = 0
+offset_left = -323.0
+offset_top = -45.0
+offset_right = -195.0
+offset_bottom = 83.0
+tooltip_text = "More money from sales"
+disabled = true
+pricePerLevel = 150
+
+[node name="SkillButton5" parent="SkillButton/SkillButton3" instance=ExtResource("1_rkbsh")]
+layout_mode = 0
+offset_left = -129.0
+offset_top = -152.0
+offset_right = -1.0
+offset_bottom = -24.0
+tooltip_text = "Pumpkins grow faster"
+disabled = true
+pricePerLevel = 150
+
+[node name="SkillButton6" parent="SkillButton/SkillButton3" instance=ExtResource("1_rkbsh")]
+layout_mode = 0
+offset_left = 122.0
+offset_top = -156.0
+offset_right = 250.0
+offset_bottom = -28.0
+tooltip_text = "More chance to want pumpkins
+1 - 1 in 5
+2 - 1 in 3
+3 - 1 in 2"
+disabled = true
+pricePerLevel = 200
+
+[node name="SkillButton4" parent="SkillButton" instance=ExtResource("1_rkbsh")]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -174.0
+offset_right = 122.0
+offset_bottom = -46.0
+tooltip_text = "Vending Mechines
+1 - Seed Store
+2 - Town Square
+3 - Cafe"
+disabled = true
