@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 var isTouching: bool = false
+@onready var seedPickUpSound : AudioStreamPlayer = $SeedPickUpSound
 
 @onready var CurrentSeeds = 10 : 
 	set (value):
@@ -48,3 +49,4 @@ func _unhandled_input(_event):
 		var _cur = CurrentSeeds
 		if tryRemoveSeeds(_cur):
 			Game.CurrentSeeds += _cur
+			seedPickUpSound.play()

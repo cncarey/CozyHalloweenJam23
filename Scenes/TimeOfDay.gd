@@ -2,15 +2,12 @@ extends Node2D
 
 var ChangeState = false
 
-@export var LengthOfDay = 10
+@export var LengthOfDay = 25
 @export var LengthOfEvening = 10
 @export var LengthOfNight = 10
 
 @onready var timer : Timer = $Timer
 @onready var animation: AnimationPlayer = $AnimationPlayer
-const nigthColor = "#836dff"
-const dayColor = "#ffffff"
-
 
 func _ready():
 	playTimeOfDay()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://bfbvbm8knujhl"]
+[gd_scene load_steps=105 format=3 uid="uid://bfbvbm8knujhl"]
 
 [ext_resource type="Script" path="res://Characters/NPC.gd" id="1_or1at"]
 [ext_resource type="PackedScene" uid="uid://bph6dk5nw8wwf" path="res://Characters/WanderController.tscn" id="2_nl8ud"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://cwv5v8bjsu4fh" path="res://Assets/SmallBurg_village_pack_v3.2_free/premades/premade_09/character_premade_09_walk.png" id="17_qd2lf"]
 [ext_resource type="Texture2D" uid="uid://bnr6hidevq3tn" path="res://Assets/SmallBurg_village_pack_v3.2_free/premades/premade_10/character_premade_10_idle.png" id="18_n5b5m"]
 [ext_resource type="Texture2D" uid="uid://dtf2wo7yilkrx" path="res://Assets/SmallBurg_village_pack_v3.2_free/premades/premade_10/character_premade_10_walk.png" id="19_uuhv4"]
+[ext_resource type="AudioStream" uid="uid://bq74nhv4v36k8" path="res://Assets/Sounds/sale.ogg" id="23_ivmod"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1jkxa"]
 atlas = ExtResource("2_ye80v")
@@ -697,6 +698,11 @@ scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_bwcwe")
 frame = 1
 frame_progress = 0.0364792
+
+[node name="CoinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_ivmod")
+volume_db = -7.0
+bus = &"SoundFx"
 
 [connection signal="body_entered" from="Touching" to="." method="npcEntered"]
 [connection signal="body_exited" from="Touching" to="." method="npcExited"]

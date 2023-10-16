@@ -50,3 +50,4 @@ func _unhandled_input(_event):
 		Game.CurrentPumpkins += 1
 		Harvested.emit()
 		queue_free()
+

@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dme635lqpjprv"]
+[gd_scene load_steps=5 format=3 uid="uid://dme635lqpjprv"]
 
 [ext_resource type="Script" path="res://Objects/DirtPatch.gd" id="1_om3do"]
+[ext_resource type="AudioStream" uid="uid://0wfehmgi2s2k" path="res://Assets/Sounds/seeding.ogg" id="2_34mep"]
+[ext_resource type="AudioStream" uid="uid://bb6n0jslmkjco" path="res://Assets/Sounds/Haresting.ogg" id="3_rqqfb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wki41"]
 size = Vector2(30, 24)
@@ -13,6 +15,16 @@ script = ExtResource("1_om3do")
 shape = SubResource("RectangleShape2D_wki41")
 
 [node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="seedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_34mep")
+volume_db = -7.0
+bus = &"SoundFx"
+
+[node name="harvestSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rqqfb")
+volume_db = -7.0
+bus = &"SoundFx"
 
 [connection signal="body_entered" from="." to="." method="patchEntered"]
 [connection signal="body_exited" from="." to="." method="patchExited"]

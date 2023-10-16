@@ -8,6 +8,8 @@ enum AIState{ NONE, IDLE, WANDER, SEESPLAYER}
 @onready var ani = $AnimatedSprite2D
 @onready var pumkinNotif = $AnimatedSprite2D2
 
+@onready var coinSound : AudioStreamPlayer = $CoinSound
+
 @onready var wanderController = $WanderController
 @onready var playerDetection = $PlayerDetectionZones
 var isTouching: bool = false
@@ -147,4 +149,5 @@ func _unhandled_input(_event):
 		if Game.tryRemovePumpkins(1):
 			hasPumpkin = true
 			Game.CurrentCoins += 30
+			coinSound.play()
 			PurchasedPumpkin.emit()
