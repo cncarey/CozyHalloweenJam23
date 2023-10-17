@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxgatpplm4rgv"]
+[gd_scene load_steps=3 format=3 uid="uid://cxgatpplm4rgv"]
 
+[ext_resource type="Script" path="res://HUD/skill_tree.gd" id="1_5mkcn"]
 [ext_resource type="PackedScene" uid="uid://defx6wlu4icmm" path="res://HUD/SkillButton.tscn" id="1_rkbsh"]
 
 [node name="SkillTree" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5mkcn")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -17,49 +19,51 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="SkillButton" parent="." instance=ExtResource("1_rkbsh")]
 layout_mode = 0
-offset_left = 476.0
-offset_top = 431.0
-offset_right = 604.0
-offset_bottom = 559.0
+offset_left = 451.0
+offset_top = 445.0
+offset_right = 579.0
+offset_bottom = 573.0
 tooltip_text = "Add Pumpkins
 1 - Your house
 2 - The town
 3 - Town Square"
+skillName = "show_pumpkins"
 
 [node name="SkillButton2" parent="SkillButton" instance=ExtResource("1_rkbsh")]
 layout_mode = 0
-offset_left = 328.0
-offset_top = -63.0
-offset_right = 456.0
-offset_bottom = 65.0
+offset_left = 286.0
+offset_top = -77.0
+offset_right = 414.0
+offset_bottom = 51.0
 tooltip_text = "Add Costumes
 1 - Neighbors
 2  - You "
 disabled = true
-maxLevel = 2
+skillName = "add_jack_o_lanterns"
 
 [node name="SkillButton3" parent="SkillButton" instance=ExtResource("1_rkbsh")]
 layout_mode = 0
-offset_left = -323.0
-offset_top = -45.0
-offset_right = -195.0
-offset_bottom = 83.0
+offset_left = -280.0
+offset_top = -84.0
+offset_right = -152.0
+offset_bottom = 44.0
 tooltip_text = "More money from sales"
 disabled = true
-pricePerLevel = 150
+skillName = "decrease_grow_speed"
 
 [node name="SkillButton5" parent="SkillButton/SkillButton3" instance=ExtResource("1_rkbsh")]
 layout_mode = 0
-offset_left = -129.0
-offset_top = -152.0
-offset_right = -1.0
-offset_bottom = -24.0
+offset_left = -122.0
+offset_top = -160.0
+offset_right = 6.0
+offset_bottom = -32.0
 tooltip_text = "Pumpkins grow faster"
 disabled = true
-pricePerLevel = 150
+skillName = "increase_coins"
 
 [node name="SkillButton6" parent="SkillButton/SkillButton3" instance=ExtResource("1_rkbsh")]
 layout_mode = 0
@@ -72,16 +76,66 @@ tooltip_text = "More chance to want pumpkins
 2 - 1 in 3
 3 - 1 in 2"
 disabled = true
-pricePerLevel = 200
+skillName = "increase_pumpkin_desire"
 
 [node name="SkillButton4" parent="SkillButton" instance=ExtResource("1_rkbsh")]
 layout_mode = 0
-offset_left = -6.0
-offset_top = -174.0
-offset_right = 122.0
-offset_bottom = -46.0
+offset_left = 33.0
+offset_top = -242.0
+offset_right = 161.0
+offset_bottom = -114.0
 tooltip_text = "Vending Mechines
 1 - Seed Store
 2 - Town Square
 3 - Cafe"
 disabled = true
+skillName = "add_vending_machines"
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -202.0
+offset_bottom = 235.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel2"]
+layout_mode = 0
+offset_right = 195.0
+offset_bottom = 227.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/MarginContainer"]
+layout_mode = 2
+
+[node name="SkillName" type="Label" parent="Panel2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Selected Skill"
+
+[node name="SkillDescription" type="RichTextLabel" parent="Panel2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "The contents of the skill selected."
+fit_content = true
+
+[node name="SkillCost" type="Label" parent="Panel2/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "0 Coins"
+
+[connection signal="onHoverStart" from="SkillButton" to="." method="setInfo"]
+[connection signal="onHoverStop" from="SkillButton" to="." method="clearInfo"]
+[connection signal="onHoverStart" from="SkillButton/SkillButton2" to="." method="setInfo"]
+[connection signal="onHoverStop" from="SkillButton/SkillButton2" to="." method="clearInfo"]
+[connection signal="onHoverStart" from="SkillButton/SkillButton3" to="." method="setInfo"]
+[connection signal="onHoverStop" from="SkillButton/SkillButton3" to="." method="clearInfo"]
+[connection signal="onHoverStart" from="SkillButton/SkillButton3/SkillButton5" to="." method="setInfo"]
+[connection signal="onHoverStop" from="SkillButton/SkillButton3/SkillButton5" to="." method="clearInfo"]
+[connection signal="onHoverStart" from="SkillButton/SkillButton3/SkillButton6" to="." method="setInfo"]
+[connection signal="onHoverStop" from="SkillButton/SkillButton3/SkillButton6" to="." method="clearInfo"]
+[connection signal="onHoverStart" from="SkillButton/SkillButton4" to="." method="setInfo"]
+[connection signal="onHoverStop" from="SkillButton/SkillButton4" to="." method="clearInfo"]
