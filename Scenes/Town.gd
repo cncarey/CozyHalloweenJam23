@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player : CharacterBody2D = $player
 @onready var plants : Node2D = $plants
+@onready var tileMap : TileMap = $TileMap
 
 func _ready():
 	Game.connect("_ShowPumpkins",_ShowPumpkins)
@@ -9,6 +10,5 @@ func _ready():
 
 	
 func _ShowPumpkins():
-	#TODO enable the pumpkins tilemap layer
-	print("show pumpkins")
+	tileMap.set_layer_enabled(3, true)
 	pass

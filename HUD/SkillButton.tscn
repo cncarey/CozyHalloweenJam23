@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://defx6wlu4icmm"]
+[gd_scene load_steps=4 format=3 uid="uid://defx6wlu4icmm"]
 
 [ext_resource type="Texture2D" uid="uid://bl86164vlygjs" path="res://icon.svg" id="1_mbqud"]
 [ext_resource type="Script" path="res://HUD/SkillButton.gd" id="2_d1f7m"]
+[ext_resource type="AudioStream" uid="uid://bg3fejxjxlvb8" path="res://Assets/Sounds/levelUp.ogg" id="3_lxehh"]
 
 [node name="SkillButton" type="TextureButton"]
 toggle_mode = true
@@ -35,6 +36,11 @@ top_level = true
 z_index = -1
 width = 5.0
 default_color = Color(0.219608, 0.219608, 0.219608, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lxehh")
+volume_db = -7.0
+bus = &"SoundFx"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

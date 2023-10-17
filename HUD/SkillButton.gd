@@ -5,10 +5,12 @@ class_name SkillNode
 @onready var panel : Panel = $Panel
 @onready var progressLabel: Label = $MarginContainer/ProgressLabel
 @onready var line : Line2D = $Line2D
+@onready var levelUpSound : AudioStreamPlayer = $AudioStreamPlayer
 
 var maxLevel : int = 1
 var skillData
 @export var skillName: String = ""
+
 
 var level : int = 0:
 	set(value):
@@ -46,6 +48,8 @@ func increaseLevel():
 	if level < maxLevel:
 		if Game.tryRemoveCoins(skillData["Cost"]):
 			level += 1
+			levelUpSound.play()
+			Game.call(skillData["Callable"])
 			onPress()
 		else:
 			self.button_pressed = false

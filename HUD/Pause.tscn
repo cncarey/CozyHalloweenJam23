@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7esqv2uuvw5m"]
+[gd_scene load_steps=3 format=3 uid="uid://c7esqv2uuvw5m"]
 
 [ext_resource type="Script" path="res://HUD/Pause.gd" id="1_kv4mq"]
+[ext_resource type="PackedScene" uid="uid://cxgatpplm4rgv" path="res://HUD/skill_tree.tscn" id="2_kd1rt"]
 
 [node name="Pause" type="CanvasLayer"]
 process_mode = 3
@@ -125,8 +126,12 @@ size_flags_horizontal = 4
 text = "Back"
 
 [node name="SkillsTreeContainer" type="MarginContainer" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="SkillTree" parent="SkillsTreeContainer" instance=ExtResource("2_kd1rt")]
+layout_mode = 2
 
 [connection signal="pressed" from="MainContainer/Resume" to="." method="resumePressed"]
 [connection signal="pressed" from="MainContainer/Options" to="." method="showOptions"]
