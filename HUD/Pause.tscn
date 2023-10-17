@@ -94,6 +94,8 @@ text = "Sound Fx"
 
 [node name="NightDarknessLbl" type="Label" parent="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "If checked the screen will be darker at night. If unchecked the day/night animation will not play."
+mouse_filter = 1
 theme_override_colors/font_color = Color(0.662745, 0.384314, 0, 1)
 text = "Nighttime Darkness"
 
@@ -117,7 +119,7 @@ layout_mode = 2
 min_value = -30.0
 max_value = 20.0
 
-[node name="HSlider4" type="HSlider" parent="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="DayNght" type="CheckBox" parent="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
 [node name="BackOptions" type="Button" parent="OptionsContainer/VBoxContainer"]
@@ -125,13 +127,40 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Back"
 
-[node name="SkillsTreeContainer" type="MarginContainer" parent="."]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="SkillsTreeContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SkillTree" parent="SkillsTreeContainer" instance=ExtResource("2_kd1rt")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 45.0
+
+[node name="MarginContainer" type="MarginContainer" parent="SkillsTreeContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.5
+offset_top = -31.0
+offset_right = 22.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 20
+
+[node name="Button" type="Button" parent="SkillsTreeContainer/MarginContainer"]
+layout_mode = 2
+text = "Back"
 
 [connection signal="pressed" from="MainContainer/Resume" to="." method="resumePressed"]
 [connection signal="pressed" from="MainContainer/Options" to="." method="showOptions"]
@@ -140,4 +169,6 @@ layout_mode = 2
 [connection signal="value_changed" from="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MasterSlider" to="." method="masterVolumeChanged"]
 [connection signal="value_changed" from="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MusicSlider" to="." method="musicVolumeChanged"]
 [connection signal="value_changed" from="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SFxSlider" to="." method="sfxVolumeChanged"]
+[connection signal="toggled" from="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/DayNght" to="." method="setDayNightAnimation"]
 [connection signal="pressed" from="OptionsContainer/VBoxContainer/BackOptions" to="." method="hideOptions"]
+[connection signal="pressed" from="SkillsTreeContainer/MarginContainer/Button" to="." method="hideSkillsTree"]

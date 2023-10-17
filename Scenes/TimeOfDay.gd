@@ -29,12 +29,19 @@ func playTimeOfDay():
 	match Game.CurrentTimeOfDay:
 		Game.TimeOfDay.Day:
 			timer.start(LengthOfDay)
-			animation.play("NightToDay")
+			if Game.playNightAnimation:
+				animation.play("NightToDay")
 			pass
 		Game.TimeOfDay.Evening:
 			timer.start(LengthOfNight)
-			animation.play("DayToEvening")
+			if Game.playNightAnimation:
+				animation.play("DayToEvening")
 			pass
 		Game.TimeOfDay.Night:
 			timer.start(LengthOfEvening)
-			animation.play("EveningToNight")
+			if Game.playNightAnimation:
+				animation.play("EveningToNight")
+	
+	#TODO optomize to only play if AlwayDay wasn't the last thing played			
+	if !Game.playNightAnimation:
+		animation.play("AlwaysDay")

@@ -13,6 +13,9 @@ extends CanvasLayer
 @onready var masterSlider : HSlider = $OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MasterSlider
 @onready var musicSlider: HSlider = $OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MusicSlider
 @onready var sFxSlider: HSlider = $OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SFxSlider
+
+@onready var DayNight : CheckBox = $OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/DayNght
+
 signal pauseChanged(state)
 
 func _ready():
@@ -34,6 +37,7 @@ func _ready():
 		sFxSlider.value = curSfx
 		pass
 		
+	DayNight.button_pressed = Game.playNightAnimation
 		
 func _input(event):
 	if event.is_action_pressed("Pause"):
@@ -108,3 +112,8 @@ func hideShow(hide, show):
 	hide.hide()
 	show.show()
 	pass
+
+
+func setDayNightAnimation(button_pressed: bool):
+	Game.playNightAnimation = button_pressed
+	pass # Replace with function body.

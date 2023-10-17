@@ -1,37 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://du23qmghlggxu"]
+[gd_scene load_steps=8 format=3 uid="uid://du23qmghlggxu"]
 
 [ext_resource type="Script" path="res://Scenes/TimeOfDay.gd" id="1_4s7hv"]
-
-[sub_resource type="Animation" id="Animation_t3phh"]
-resource_name = "NightToDay"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasModulate:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.513726, 0.427451, 1, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_2rifd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasModulate:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.513726, 0.427451, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_m2f4h"]
 resource_name = "DayToEvening"
@@ -65,8 +34,56 @@ tracks/0/keys = {
 "values": [Color(0.721569, 0.709804, 1, 1), Color(0.513726, 0.427451, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_t3phh"]
+resource_name = "NightToDay"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.513726, 0.427451, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2rifd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.513726, 0.427451, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bejl5"]
+resource_name = "AlwaysDay"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wnlil"]
 _data = {
+"AlwaysDay": SubResource("Animation_bejl5"),
 "DayToEvening": SubResource("Animation_m2f4h"),
 "EveningToNight": SubResource("Animation_7tb78"),
 "NightToDay": SubResource("Animation_t3phh"),

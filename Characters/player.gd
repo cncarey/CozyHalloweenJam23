@@ -75,11 +75,16 @@ func changeState(newStateName: String):
 
 func setTimeOfDay(tod):
 	#TODO put on your halloween costume if you have unlocked it
+	
 	match tod:
 		Game.TimeOfDay.Day:
 			light.enabled = false
 		Game.TimeOfDay.Night:
-			light.enabled = true
+			if Game.playNightAnimation:
+				light.enabled = true
 		Game.TimeOfDay.Evening:
-			light.enabled = true
+			if Game.playNightAnimation:
+				light.enabled = true
 		
+	if !Game.playNightAnimation:
+		light.enabled = false

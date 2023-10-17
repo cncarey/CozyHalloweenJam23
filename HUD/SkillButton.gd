@@ -34,14 +34,19 @@ func _ready():
 		
 	if skillName != "" && Game.ActiveUpgrades.has(skillName):
 		var activeSkill = Game.ActiveUpgrades.get(skillName)
+		
+		if activeSkill is int:
+			level = activeSkill
+		elif activeSkill is bool:
+			level = 1
+		else:
+			level = 0
 	else:
 		level = 0
-	#TODO set the field associated with this
-	#TODO figure out if the value is a boolean or an int
-#	
-#		if level > 0:
-#			self.button_pressed = true
-#			onPress()
+		
+	if level > 0:
+		self.button_pressed = true
+		onPress()
 			
 func increaseLevel():
 	#check if you have enough money 
