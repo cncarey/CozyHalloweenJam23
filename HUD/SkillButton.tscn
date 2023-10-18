@@ -13,14 +13,14 @@ script = ExtResource("2_d1f7m")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 48.0
+offset_bottom = 48.0
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 48.0
+offset_bottom = 48.0
 
 [node name="ProgressLabel" type="Label" parent="MarginContainer"]
 layout_mode = 2
@@ -34,12 +34,11 @@ vertical_alignment = 2
 [node name="Line2D" type="Line2D" parent="."]
 top_level = true
 z_index = -1
-width = 5.0
 default_color = Color(0.219608, 0.219608, 0.219608, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_lxehh")
-volume_db = -7.0
+volume_db = -10.0
 bus = &"SoundFx"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

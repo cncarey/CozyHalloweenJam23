@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxgatpplm4rgv"]
+[gd_scene load_steps=11 format=3 uid="uid://cxgatpplm4rgv"]
 
 [ext_resource type="Script" path="res://HUD/skill_tree.gd" id="1_5mkcn"]
 [ext_resource type="PackedScene" uid="uid://defx6wlu4icmm" path="res://HUD/SkillButton.tscn" id="1_rkbsh"]
+[ext_resource type="Texture2D" uid="uid://cqaupov5vqb7g" path="res://Assets/SkillTreeIcons/012-pumpkin.png" id="3_j625r"]
+[ext_resource type="Texture2D" uid="uid://28r6la46clgw" path="res://Assets/SkillTreeIcons/011-candy-bag.png" id="4_fd685"]
+[ext_resource type="Texture2D" uid="uid://bmaimmxw1n1hi" path="res://Assets/SkillTreeIcons/032-black-cat-1.png" id="5_n5rn8"]
+[ext_resource type="Texture2D" uid="uid://cuuqej0saywoe" path="res://Assets/SkillTreeIcons/014-bats.png" id="5_nrg8m"]
+[ext_resource type="Texture2D" uid="uid://dyc7jtxmqvpu5" path="res://Assets/SkillTreeIcons/021-invitation.png" id="6_o7fx5"]
+[ext_resource type="Texture2D" uid="uid://xbdsrvonoiew" path="res://Assets/SkillTreeIcons/023-eye.png" id="7_8fiv5"]
+[ext_resource type="Texture2D" uid="uid://hm76yuj0xfwv" path="res://Assets/SkillTreeIcons/041-vending-machine.png" id="8_6erp4"]
+[ext_resource type="Texture2D" uid="uid://behkefquydsh8" path="res://Assets/SkillTreeIcons/035-sesame.png" id="9_8hpvq"]
 
 [node name="SkillTree" type="Control"]
 layout_direction = 1
@@ -14,6 +22,8 @@ grow_vertical = 2
 script = ExtResource("1_5mkcn")
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
+z_index = -2
 layout_direction = 1
 layout_mode = 0
 offset_right = 1024.0
@@ -22,72 +32,105 @@ mouse_filter = 2
 
 [node name="SkillButton" parent="." instance=ExtResource("1_rkbsh")]
 layout_mode = 0
-offset_left = 455.0
-offset_top = 416.0
-offset_right = 583.0
-offset_bottom = 544.0
+offset_left = 415.0
+offset_top = 476.0
+offset_right = 463.0
+offset_bottom = 524.0
 tooltip_text = "Add Pumpkins
 1 - Your house
 2 - The town
 3 - Town Square"
+texture_normal = ExtResource("3_j625r")
 skillName = "show_pumpkins"
 
 [node name="SkillButton2" parent="SkillButton" instance=ExtResource("1_rkbsh")]
 layout_mode = 0
-offset_left = 286.0
-offset_top = -77.0
-offset_right = 414.0
-offset_bottom = 51.0
+offset_left = 222.0
+offset_top = -91.0
+offset_right = 270.0
+offset_bottom = -43.0
 tooltip_text = "Add Costumes
 1 - Neighbors
 2  - You "
 disabled = true
+texture_normal = ExtResource("4_fd685")
 skillName = "add_jack_o_lanterns"
 
-[node name="SkillButton3" parent="SkillButton" instance=ExtResource("1_rkbsh")]
+[node name="SkillButton5" parent="SkillButton/SkillButton2" instance=ExtResource("1_rkbsh")]
 layout_mode = 0
-offset_left = -280.0
-offset_top = -84.0
-offset_right = -152.0
-offset_bottom = 44.0
-tooltip_text = "More money from sales"
+offset_left = -128.0
+offset_top = -60.0
+offset_right = -80.0
+offset_bottom = -12.0
+tooltip_text = "Add Costumes
+1 - Neighbors
+2  - You "
 disabled = true
-skillName = "decrease_grow_speed"
+texture_normal = ExtResource("5_n5rn8")
+skillName = "add_black_cats"
 
-[node name="SkillButton5" parent="SkillButton/SkillButton3" instance=ExtResource("1_rkbsh")]
+[node name="SkillButton5" parent="SkillButton" instance=ExtResource("1_rkbsh")]
 layout_mode = 0
-offset_left = -122.0
-offset_top = -160.0
-offset_right = 6.0
-offset_bottom = -32.0
+offset_left = -205.0
+offset_top = -95.0
+offset_right = -157.0
+offset_bottom = -47.0
 tooltip_text = "Pumpkins grow faster"
 disabled = true
+texture_normal = ExtResource("6_o7fx5")
 skillName = "increase_coins"
 
-[node name="SkillButton6" parent="SkillButton/SkillButton3" instance=ExtResource("1_rkbsh")]
+[node name="SkillButton3" parent="SkillButton/SkillButton5" instance=ExtResource("1_rkbsh")]
 layout_mode = 0
-offset_left = 122.0
-offset_top = -156.0
-offset_right = 250.0
-offset_bottom = -28.0
+offset_left = -123.0
+offset_top = -79.0
+offset_right = -75.0
+offset_bottom = -31.0
+tooltip_text = "More money from sales"
+disabled = true
+texture_normal = ExtResource("5_nrg8m")
+skillName = "decrease_grow_speed"
+
+[node name="SkillButton6" parent="SkillButton/SkillButton5" instance=ExtResource("1_rkbsh")]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -81.0
+offset_right = 64.0
+offset_bottom = -33.0
 tooltip_text = "More chance to want pumpkins
 1 - 1 in 5
 2 - 1 in 3
 3 - 1 in 2"
 disabled = true
+texture_normal = ExtResource("7_8fiv5")
 skillName = "increase_pumpkin_desire"
+
+[node name="SkillButton7" parent="SkillButton/SkillButton5" instance=ExtResource("1_rkbsh")]
+layout_mode = 0
+offset_left = 122.0
+offset_top = -81.0
+offset_right = 170.0
+offset_bottom = -33.0
+tooltip_text = "More chance to want pumpkins
+1 - 1 in 5
+2 - 1 in 3
+3 - 1 in 2"
+disabled = true
+texture_normal = ExtResource("9_8hpvq")
+skillName = "increase_shop_seeds"
 
 [node name="SkillButton4" parent="SkillButton" instance=ExtResource("1_rkbsh")]
 layout_mode = 0
-offset_left = 33.0
-offset_top = -242.0
-offset_right = 161.0
-offset_bottom = -114.0
+offset_left = -8.0
+offset_top = -96.0
+offset_right = 40.0
+offset_bottom = -48.0
 tooltip_text = "Vending Mechines
 1 - Seed Store
 2 - Town Square
 3 - Cafe"
 disabled = true
+texture_normal = ExtResource("8_6erp4")
 skillName = "add_vending_machines"
 
 [node name="Panel2" type="Panel" parent="."]
@@ -135,11 +178,15 @@ text = "0 Coins"
 [connection signal="onHoverStop" from="SkillButton" to="." method="clearInfo"]
 [connection signal="onHoverStart" from="SkillButton/SkillButton2" to="." method="setInfo"]
 [connection signal="onHoverStop" from="SkillButton/SkillButton2" to="." method="clearInfo"]
-[connection signal="onHoverStart" from="SkillButton/SkillButton3" to="." method="setInfo"]
-[connection signal="onHoverStop" from="SkillButton/SkillButton3" to="." method="clearInfo"]
-[connection signal="onHoverStart" from="SkillButton/SkillButton3/SkillButton5" to="." method="setInfo"]
-[connection signal="onHoverStop" from="SkillButton/SkillButton3/SkillButton5" to="." method="clearInfo"]
-[connection signal="onHoverStart" from="SkillButton/SkillButton3/SkillButton6" to="." method="setInfo"]
-[connection signal="onHoverStop" from="SkillButton/SkillButton3/SkillButton6" to="." method="clearInfo"]
+[connection signal="onHoverStart" from="SkillButton/SkillButton2/SkillButton5" to="." method="setInfo"]
+[connection signal="onHoverStop" from="SkillButton/SkillButton2/SkillButton5" to="." method="clearInfo"]
+[connection signal="onHoverStart" from="SkillButton/SkillButton5" to="." method="setInfo"]
+[connection signal="onHoverStop" from="SkillButton/SkillButton5" to="." method="clearInfo"]
+[connection signal="onHoverStart" from="SkillButton/SkillButton5/SkillButton3" to="." method="setInfo"]
+[connection signal="onHoverStop" from="SkillButton/SkillButton5/SkillButton3" to="." method="clearInfo"]
+[connection signal="onHoverStart" from="SkillButton/SkillButton5/SkillButton6" to="." method="setInfo"]
+[connection signal="onHoverStop" from="SkillButton/SkillButton5/SkillButton6" to="." method="clearInfo"]
+[connection signal="onHoverStart" from="SkillButton/SkillButton5/SkillButton7" to="." method="setInfo"]
+[connection signal="onHoverStop" from="SkillButton/SkillButton5/SkillButton7" to="." method="clearInfo"]
 [connection signal="onHoverStart" from="SkillButton/SkillButton4" to="." method="setInfo"]
 [connection signal="onHoverStop" from="SkillButton/SkillButton4" to="." method="clearInfo"]

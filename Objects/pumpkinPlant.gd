@@ -11,7 +11,7 @@ var isTouching: bool = false
 signal Harvested()
 
 func _ready():
-	timer.start(Game.GrowSpeed)
+	timer.start(getGrowSpeed())
 	plant.frame = 101
 	
 func _process(_delta):
@@ -31,10 +31,15 @@ func _process(_delta):
 func goToNextStage():
 	if stage <= 5:
 		stage += 1
-		timer.start(Game.GrowSpeed)
+		timer.start(getGrowSpeed())
 	pass 
 	
-
+func getGrowSpeed() -> int:
+	if Game.ActiveUpgrades.has(Game.DECREASE_GROW_SPEED):
+		return Game.GrowSpeed - Game.ActiveUpgrades.get(Game.DECREASE_GROW_SPEED)
+	else:
+		return Game.GrowSpeed
+		
 func plantEntered(_body):
 	isTouching = true
 	#TouchIndicator.show()

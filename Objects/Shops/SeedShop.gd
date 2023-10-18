@@ -27,7 +27,12 @@ func _ready():
 func setTimeOfDay(tod):
 	match tod:
 		Game.TimeOfDay.Day:
-			CurrentSeeds = randi_range(Game.MinShopSeeds, Game.MaxShopSeeds)	
+			if Game.ActiveUpgrades.has(Game.INCREASE_SHOP_SEEDS):
+				var minSeeds = Game.MinShopSeeds + ceili(0.5 * Game.MinShopSeeds * Game.ActiveUpgrades.get(Game.INCREASE_SHOP_SEEDS))
+				var maxSeeds = Game.MaxShopSeeds + ceili(0.5 * Game.MaxShopSeeds * Game.ActiveUpgrades.get(Game.INCREASE_SHOP_SEEDS))
+				CurrentSeeds = randi_range(minSeeds, maxSeeds)	
+			else:	
+				CurrentSeeds = randi_range(Game.MinShopSeeds, Game.MaxShopSeeds)	
 		Game.TimeOfDay.Night:
 			pass
 		Game.TimeOfDay.Evening:

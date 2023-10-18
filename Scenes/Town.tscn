@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://8it56ewx83vg"]
+[gd_scene load_steps=27 format=3 uid="uid://8it56ewx83vg"]
 
 [ext_resource type="Texture2D" uid="uid://cr3tvn2756hrv" path="res://Assets/SmallBurg_village_pack_v3.2_free/assets/tileset/terrain/smallburg_spring_terrain.png" id="1_04875"]
 [ext_resource type="Script" path="res://Scenes/TownCamera2D.gd" id="1_d00tp"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://cy5iteyuvtu0t" path="res://Objects/Shops/SeedShop.tscn" id="10_eatdb"]
 [ext_resource type="PackedScene" uid="uid://bfbvbm8knujhl" path="res://Characters/NPC.tscn" id="11_pfaum"]
 [ext_resource type="PackedScene" uid="uid://du23qmghlggxu" path="res://Scenes/TimeOfDay.tscn" id="14_4u3f7"]
-[ext_resource type="PackedScene" uid="uid://bkyjogm372td6" path="res://Characters/Cat.tscn" id="15_0hw1f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0gymp"]
 texture = ExtResource("1_04875")
@@ -14680,5 +14679,19 @@ text = "To Move"
 
 [node name="TimeOfDay" parent="." instance=ExtResource("14_4u3f7")]
 
-[node name="Cat" parent="." instance=ExtResource("15_0hw1f")]
-position = Vector2(148, 237)
+[node name="Cats" type="Node2D" parent="."]
+
+[node name="Cat1" type="Marker2D" parent="Cats"]
+position = Vector2(148.015, 245.26)
+
+[node name="Cat2" type="Marker2D" parent="Cats"]
+position = Vector2(221.237, 669.193)
+
+[node name="Cat3" type="Marker2D" parent="Cats"]
+position = Vector2(835.725, 474.252)
+
+[node name="Cat4" type="Marker2D" parent="Cats"]
+position = Vector2(1136.61, 137.342)
+
+[node name="Cat5" type="Marker2D" parent="Cats"]
+position = Vector2(1295.53, 700.977)

@@ -66,10 +66,20 @@ func resetDay():
 	hasPumpkin = false
 	pumkinNotif.hide()
 	
-	var wantsPumpkin = randi_range(1, Game.PumpkinDesireLevel)
+	var curDesire = Game.PumpkinDesireLevel
+	if Game.ActiveUpgrades.has(Game.INCREASE_PUMPKIN_DESIRE):
+		match Game.ActiveUpgrades.get(Game.INCREASE_PUMPKIN_DESIRE):
+			1:
+				curDesire = Game.PUMPKIN_DESIRE_1
+			2:
+				curDesire = Game.PUMPKIN_DESIRE_2
+			3:
+				curDesire = Game.PUMPKIN_DESIRE_3	
+	
+	var wantsPumpkin = randi_range(1, curDesire)
 	wantsPumpkinToday = wantsPumpkin == 1
 	
-	print(str(skin) + ": " + str(wantsPumpkinToday))
+	print(str(skin) + ": " + str(wantsPumpkinToday) + " " + str(curDesire) )
 	pass
 
 func _physics_process(delta):
@@ -148,6 +158,11 @@ func _unhandled_input(_event):
 	if Input.is_action_just_pressed("interact") && isTouching && Game.CurrentPumpkins > 0 && wantsPumpkinToday && !hasPumpkin:
 		if Game.tryRemovePumpkins(1):
 			hasPumpkin = true
-			Game.CurrentCoins += 30
+			
+			if Game.ActiveUpgrades.has(Game.INCREASE_COINS):
+				Game.CurrentCoins += Game.CoinsPerSale + ceili( 0.5 * Game.CoinsPerSale * Game.ActiveUpgrades.get(Game.INCREASE_COINS))
+			else:	
+				Game.CurrentCoins += Game.CoinsPerSale
+			
 			coinSound.play()
 			PurchasedPumpkin.emit()

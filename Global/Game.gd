@@ -26,11 +26,19 @@ func IncreaseCoins():
 	else:
 		ActiveUpgrades[INCREASE_COINS] = 1
 	pass
+	
+const INCREASE_SHOP_SEEDS = "increase_shop_seeds"
+func IncreaseShopSeeds():
+	if ActiveUpgrades.has(INCREASE_SHOP_SEEDS):
+		ActiveUpgrades[INCREASE_SHOP_SEEDS] += 1
+	else:
+		ActiveUpgrades[INCREASE_SHOP_SEEDS] = 1
+	pass
 
 #it's less of a pain to do this then calculate the fibo seq
-const PUMPKIN_DESIRE_1 = 5
-const PUMPKIN_DESIRE_2 = 3
-const PUMPKIN_DESIRE_3 = 2
+const PUMPKIN_DESIRE_1 = 3
+const PUMPKIN_DESIRE_2 = 2
+const PUMPKIN_DESIRE_3 = 1
 
 const INCREASE_PUMPKIN_DESIRE = "increase_pumpkin_desire"
 func IncreasePumpkinDesire():
@@ -75,9 +83,11 @@ func AddCostumes():
 	ActiveUpgrades[ADD_COSTUMES] = true
 	pass
 
+signal _AddBlackCats()
 const ADD_BLACK_CATS = "add_black_cats"
 func AddBlackCats():
 	ActiveUpgrades[ADD_BLACK_CATS] = true
+	_AddBlackCats.emit()
 	pass
 
 const ADD_PUMPKIN_CAFE = "add_pumpin_cafe"
@@ -96,10 +106,10 @@ func AddPumpkinPatch():
 	pass
 
 var GrowSpeed = 4
-var PumpkinDesireLevel = 2
+var PumpkinDesireLevel = 4
 var MinShopSeeds = 10
 var MaxShopSeeds = 15
-
+var CoinsPerSale = 30
 
 enum TimeOfDay {Day, Evening, Night}
 @onready var CurrentTimeOfDay : TimeOfDay = TimeOfDay.Day:
@@ -197,6 +207,13 @@ var Upgrades = {
 		"Cost" : 200,
 		"Callable" : "IncreaseCoins"
 	},
+	"increase_shop_seeds": {
+		"Name" : "More Seeds in the Shop",
+		"Description" : "The pumpkins shop stocks more seeds",
+		"Levels" : 3,
+		"Cost" : 150,
+		"Callable" : "IncreaseShopSeeds"
+	},
 	"increase_pumpkin_desire": {
 		"Name" : "Increase Pumpkin Needs",
 		"Description" : "Increase the likelyhood that neighbors will want pumpkins each day",
@@ -224,8 +241,14 @@ var Upgrades = {
 		"Levels" : 1,
 		"Cost" : 250,
 		"Callable" : "AddJackOLanterns"
+	},
+	"add_black_cats" : {
+		"Name" : "Furry Feline Friends",
+		"Description" : "Black cats appear around town",
+		"Levels" : 1,
+		"Cost" : 250,
+		"Callable" : "AddBlackCats"
 	}
-	
 }
 
 func reset():
