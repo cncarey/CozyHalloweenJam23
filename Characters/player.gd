@@ -40,6 +40,11 @@ func getInput():
 		pass	
 
 func _physics_process(_delta):
+	if !Game.CanMove:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+	
 	var direction = Input.get_vector("left", "right", "up", "down")
 	
 	if direction != Vector2.ZERO:

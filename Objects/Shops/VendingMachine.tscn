@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://cy6b3aepqyslk"]
+
+[ext_resource type="Script" path="res://Objects/Shops/VendingMachine.gd" id="1_2e3nw"]
+[ext_resource type="Texture2D" uid="uid://d2ydxs6esy27u" path="res://Assets/pumpkinVendingMachine.png" id="2_1mnh7"]
+[ext_resource type="AudioStream" uid="uid://bq74nhv4v36k8" path="res://Assets/Sounds/sale.ogg" id="3_11rs4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3r0qn"]
+size = Vector2(14, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5slmn"]
+radius = 11.0
+height = 58.0
+
+[node name="VendingMachine" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_2e3nw")
+
+[node name="PumpkinVendingMachine" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_1mnh7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_3r0qn")
+
+[node name="Touching" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Touching"]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_5slmn")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_11rs4")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Stats" type="Label" parent="."]
+layout_direction = 1
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 18
+text = "0/20"
+
+[connection signal="body_entered" from="Touching" to="." method="vendingEntered"]
+[connection signal="body_exited" from="Touching" to="." method="vendingExited"]
+[connection signal="timeout" from="Timer" to="." method="makeSale"]

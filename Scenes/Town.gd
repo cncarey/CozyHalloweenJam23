@@ -7,6 +7,8 @@ extends Node2D
 @onready var catPoints : Node2D =  $Cats
 
 @onready var cat = preload("res://Characters/Cat.tscn")
+@onready var ui : CanvasLayer = $UI
+
 func _ready():
 	Game.connect("_ShowPumpkins",_ShowPumpkins)
 	Game.connect("_AddBlackCats", _AddBlackCats)
@@ -23,3 +25,9 @@ func _AddBlackCats():
 		_cat.position = p.position
 		add_child(_cat)
 	pass
+
+
+
+func _on_vending_machine_open_pop_up(popup):
+	ui.add_child(popup)
+	pass # Replace with function body.

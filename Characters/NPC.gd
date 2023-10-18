@@ -4,6 +4,7 @@ enum AIState{ NONE, IDLE, WANDER, SEESPLAYER}
 
 @onready var state = AIState.IDLE
 @export var acceleration = 50
+@export var alwaysWantsPumpkins :bool = false
 
 @onready var ani = $AnimatedSprite2D
 @onready var pumkinNotif = $AnimatedSprite2D2
@@ -77,7 +78,10 @@ func resetDay():
 				curDesire = Game.PUMPKIN_DESIRE_3	
 	
 	var wantsPumpkin = randi_range(1, curDesire)
-	wantsPumpkinToday = wantsPumpkin == 1
+	if alwaysWantsPumpkins:
+		wantsPumpkinToday = true
+	else:
+		wantsPumpkinToday = wantsPumpkin == 1
 	
 	print(str(skin) + ": " + str(wantsPumpkinToday) + " " + str(curDesire) )
 	pass

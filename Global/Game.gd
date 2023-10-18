@@ -109,7 +109,11 @@ var GrowSpeed = 4
 var PumpkinDesireLevel = 4
 var MinShopSeeds = 10
 var MaxShopSeeds = 15
+var MinVendingDuration = 5
+var MaxVendingDuration = 12
 var CoinsPerSale = 30
+
+var CanMove = true
 
 enum TimeOfDay {Day, Evening, Night}
 @onready var CurrentTimeOfDay : TimeOfDay = TimeOfDay.Day:

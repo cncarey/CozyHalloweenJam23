@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://8it56ewx83vg"]
+[gd_scene load_steps=28 format=3 uid="uid://8it56ewx83vg"]
 
 [ext_resource type="Texture2D" uid="uid://cr3tvn2756hrv" path="res://Assets/SmallBurg_village_pack_v3.2_free/assets/tileset/terrain/smallburg_spring_terrain.png" id="1_04875"]
 [ext_resource type="Script" path="res://Scenes/TownCamera2D.gd" id="1_d00tp"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cy5iteyuvtu0t" path="res://Objects/Shops/SeedShop.tscn" id="10_eatdb"]
 [ext_resource type="PackedScene" uid="uid://bfbvbm8knujhl" path="res://Characters/NPC.tscn" id="11_pfaum"]
 [ext_resource type="PackedScene" uid="uid://du23qmghlggxu" path="res://Scenes/TimeOfDay.tscn" id="14_4u3f7"]
+[ext_resource type="PackedScene" uid="uid://cy6b3aepqyslk" path="res://Objects/Shops/VendingMachine.tscn" id="15_i4a4v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0gymp"]
 texture = ExtResource("1_04875")
@@ -14481,7 +14482,7 @@ texture = ExtResource("8_u6aiv")
 3:3/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_67f2e"]
-physics_layer_0/collision_layer = 2
+physics_layer_0/collision_layer = 6
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Grass"
 terrain_set_0/terrain_0/color = Color(0.878431, 0.345098, 0.25098, 1)
@@ -14640,6 +14641,7 @@ position = Vector2(117.294, 361.343)
 
 [node name="NPC6" parent="NPCs" instance=ExtResource("11_pfaum")]
 position = Vector2(229.667, 366.587)
+alwaysWantsPumpkins = true
 
 [node name="Node" type="Node2D" parent="."]
 
@@ -14695,3 +14697,8 @@ position = Vector2(1136.61, 137.342)
 
 [node name="Cat5" type="Marker2D" parent="Cats"]
 position = Vector2(1295.53, 700.977)
+
+[node name="VendingMachine" parent="." instance=ExtResource("15_i4a4v")]
+position = Vector2(398, 396)
+
+[connection signal="OpenPopUp" from="VendingMachine" to="." method="_on_vending_machine_open_pop_up"]

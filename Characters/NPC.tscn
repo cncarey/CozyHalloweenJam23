@@ -668,7 +668,7 @@ animations = [{
 
 [node name="NPC" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 0
 script = ExtResource("1_or1at")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -687,6 +687,8 @@ shape = SubResource("CircleShape2D_8k6gf")
 shape = SubResource("CircleShape2D_bbv1a")
 
 [node name="PlayerDetectionZones" parent="." instance=ExtResource("3_m704k")]
+collision_layer = 1
+collision_mask = 1
 
 [node name="CollisionShape2D" parent="PlayerDetectionZones" index="0"]
 shape = SubResource("CircleShape2D_of8dh")

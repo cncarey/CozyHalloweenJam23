@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhlesx0noxok4"]
+
+[ext_resource type="Script" path="res://HUD/SelectMany.gd" id="1_hq55k"]
+[ext_resource type="Texture2D" uid="uid://cwl4up2eotxxp" path="res://Assets/BiomeClearBonus.png" id="1_vk8w4"]
+[ext_resource type="Texture2D" uid="uid://bjl3sh88pxr6d" path="res://Assets/remove.svg" id="3_u68sh"]
+[ext_resource type="Texture2D" uid="uid://cwo6nfdgi6wck" path="res://Assets/check.svg" id="4_8v3qe"]
+
+[node name="SelectMany" type="MarginContainer"]
+process_mode = 3
+script = ExtResource("1_hq55k")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_vk8w4")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.831373, 0.67451, 0.580392, 1)
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "How Many?"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CurrentPumpkins" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+max_value = 1.0
+
+[node name="Amount" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "/0"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="No" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_u68sh")
+
+[node name="Yes" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_8v3qe")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/No" to="." method="cancel"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Yes" to="." method="submit"]
