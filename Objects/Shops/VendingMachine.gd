@@ -2,6 +2,7 @@ extends StaticBody2D
 
 var isTouching: bool = false
 var MaxPumpkins :int = 20
+var popupOpened :bool = false
 
 @onready var salesTimer :Timer = $Timer
 @onready var stats : Label = $Stats
@@ -39,13 +40,19 @@ func makeSale():
 			salesTimer.start(randi_range(Game.MinVendingDuration, Game.MaxVendingDuration))
 		
 func loadPumpkins(increase):
-	if increase > 0:
+	Game.CanMove = true
+	if increase > 0 && popupOpened:
+		popupOpened = false
 		if Game.tryRemovePumpkins(increase):
 			CurrentPumpkins += increase
 			#play load sound
 			
 			salesTimer.start(randi_range(Game.MinVendingDuration, Game.MaxVendingDuration))
 		
+func cancelLoad():
+	Game.CanMove = true
+	popupOpened = false
+	
 func maxPumpkinLoad() -> int:
 	return MaxPumpkins - CurrentPumpkins
 	
@@ -61,13 +68,14 @@ func vendingExited(_body):
 	
 signal OpenPopUp(popup)
 func _unhandled_input(_event):
-	if Input.is_action_just_pressed("interact") && isTouching:
+	if Input.is_action_just_pressed("interact") && isTouching && !popupOpened:
 		var _mp  = min(Game.CurrentPumpkins, maxPumpkinLoad())
 		var _howMany = howMany.instantiate()
 		_howMany.MaxSelected = _mp
 		#_howMany.global_position = self.global_position
-		
+		popupOpened = true
 		OpenPopUp.emit(_howMany)
 		_howMany.connect("loadPumpkins", loadPumpkins)
+		_howMany.connect("cancelLoad", cancelLoad)
 		#instantiate a transfer popup and set any values that need to be passed
 		#Connect it to loadPumpkins

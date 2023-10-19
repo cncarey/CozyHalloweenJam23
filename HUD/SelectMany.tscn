@@ -7,6 +7,8 @@
 
 [node name="SelectMany" type="MarginContainer"]
 process_mode = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
 script = ExtResource("1_hq55k")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]

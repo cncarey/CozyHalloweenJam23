@@ -58,6 +58,7 @@ func AddBusStop():
 		ActiveUpgrades[ADD_BUS_STOPS] = 1
 	pass
 
+signal _AddVendingMachines()
 const ADD_VENDING_MACHINES = "add_vending_machines"
 func AddVendingMachines():
 	if ActiveUpgrades.has(ADD_VENDING_MACHINES):
@@ -65,6 +66,8 @@ func AddVendingMachines():
 		ActiveUpgrades[ADD_VENDING_MACHINES] =  min(curVendingMachines, 3)
 	else:
 		ActiveUpgrades[ADD_VENDING_MACHINES] = 1
+		
+	_AddVendingMachines.emit()
 	pass
 
 #decorations

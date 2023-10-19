@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://8it56ewx83vg"]
+[gd_scene load_steps=27 format=3 uid="uid://8it56ewx83vg"]
 
 [ext_resource type="Texture2D" uid="uid://cr3tvn2756hrv" path="res://Assets/SmallBurg_village_pack_v3.2_free/assets/tileset/terrain/smallburg_spring_terrain.png" id="1_04875"]
 [ext_resource type="Script" path="res://Scenes/TownCamera2D.gd" id="1_d00tp"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://cy5iteyuvtu0t" path="res://Objects/Shops/SeedShop.tscn" id="10_eatdb"]
 [ext_resource type="PackedScene" uid="uid://bfbvbm8knujhl" path="res://Characters/NPC.tscn" id="11_pfaum"]
 [ext_resource type="PackedScene" uid="uid://du23qmghlggxu" path="res://Scenes/TimeOfDay.tscn" id="14_4u3f7"]
-[ext_resource type="PackedScene" uid="uid://cy6b3aepqyslk" path="res://Objects/Shops/VendingMachine.tscn" id="15_i4a4v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0gymp"]
 texture = ExtResource("1_04875")
@@ -14698,7 +14697,13 @@ position = Vector2(1136.61, 137.342)
 [node name="Cat5" type="Marker2D" parent="Cats"]
 position = Vector2(1295.53, 700.977)
 
-[node name="VendingMachine" parent="." instance=ExtResource("15_i4a4v")]
+[node name="VendingMachinePoints" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="VendingMachinePoints"]
 position = Vector2(398, 396)
 
-[connection signal="OpenPopUp" from="VendingMachine" to="." method="_on_vending_machine_open_pop_up"]
+[node name="Marker2D2" type="Marker2D" parent="VendingMachinePoints"]
+position = Vector2(241.817, 500.758)
+
+[node name="Marker2D3" type="Marker2D" parent="VendingMachinePoints"]
+position = Vector2(661.894, 518.769)
