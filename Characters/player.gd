@@ -16,6 +16,8 @@ var statageManager: StateManager
 @export var isLite : bool = false
 @onready var light : PointLight2D = $PointLight2D
 
+var tween : Tween
+
 func _ready():
 	statageManager = StateManager.new()
 	changeState("Idle")
@@ -81,15 +83,19 @@ func changeState(newStateName: String):
 func setTimeOfDay(tod):
 	#TODO put on your halloween costume if you have unlocked it
 	
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	
 	match tod:
 		Game.TimeOfDay.Day:
-			light.enabled = false
+			tween.tween_property(light, "energy",0, 3)
 		Game.TimeOfDay.Night:
 			if Game.playNightAnimation:
-				light.enabled = true
+				pass
 		Game.TimeOfDay.Evening:
 			if Game.playNightAnimation:
-				light.enabled = true
+				tween.tween_property(light, "energy",.25, 3)
 		
 	if !Game.playNightAnimation:
 		light.enabled = false

@@ -6,9 +6,11 @@ extends Node2D
 
 @onready var catPoints : Node2D =  $Cats
 @onready var VendingPoints: Node2D = $VendingMachinePoints
+@onready var DotDPoints: Marker2D = $DotDBand
 
 @onready var cat = preload("res://Characters/Cat.tscn")
 @onready var vending = preload("res://Objects/Shops/VendingMachine.tscn")
+@onready var DotDBand = preload("res://Characters/DotDDancers.tscn")
 @onready var ui : CanvasLayer = $UI
 
 func _ready():
@@ -16,7 +18,7 @@ func _ready():
 	Game.connect("_ShowYourPumpkins",_ShowYourPumpkins)
 	Game.connect("_AddBlackCats", _AddBlackCats)
 	Game.connect("_AddVendingMachines", _AddVendingMachines)
-	
+	Game.connect("_DayOfTheDead", _DayOfTheDead)
 	pass
 
 	
@@ -33,6 +35,13 @@ func _AddBlackCats():
 		var _cat = cat.instantiate()
 		_cat.position = p.position
 		add_child(_cat)
+	pass
+	
+func _DayOfTheDead():
+	var _dotd = DotDBand.instantiate()
+	_dotd.global_position = DotDPoints.global_position
+	_dotd.scale = Vector2(.6, .6)
+	add_child(_dotd)
 	pass
 
 func _AddVendingMachines():

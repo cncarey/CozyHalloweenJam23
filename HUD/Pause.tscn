@@ -35,14 +35,19 @@ horizontal_alignment = 1
 
 [node name="Resume" type="Button" parent="MainContainer"]
 layout_mode = 2
+focus_next = NodePath("../Options")
 text = "Resume"
 
 [node name="Options" type="Button" parent="MainContainer"]
 layout_mode = 2
+focus_next = NodePath("../Skill Tree")
+focus_previous = NodePath("../Resume")
 text = "Options"
 
 [node name="Skill Tree" type="Button" parent="MainContainer"]
 layout_mode = 2
+focus_next = NodePath("../VBoxContainer/Quit")
+focus_previous = NodePath("../Options")
 text = "Skill Tree"
 
 [node name="VBoxContainer" type="MarginContainer" parent="MainContainer"]
@@ -51,6 +56,7 @@ theme_override_constants/margin_top = 100
 
 [node name="Quit" type="Button" parent="MainContainer/VBoxContainer"]
 layout_mode = 2
+focus_previous = NodePath("../../Skill Tree")
 text = "Quit Game"
 
 [node name="OptionsContainer" type="MarginContainer" parent="."]

@@ -4,6 +4,9 @@ class_name SkillNode
 
 @onready var panel : Panel = $Panel
 @onready var progressLabel: Label = $MarginContainer/ProgressLabel
+
+@onready var costMargin : MarginContainer = $MarginContainer2
+@onready var cost: Label = $MarginContainer2/HBoxContainer/cost
 @onready var line : Line2D = $Line2D
 @onready var levelUpSound : AudioStreamPlayer = $AudioStreamPlayer
 
@@ -19,6 +22,13 @@ var level : int = 0:
 		if progressLabel != null:
 			progressLabel.text = str(min( level, maxLevel)) + "/" + str(maxLevel)
 			
+		if level == maxLevel:
+			costMargin.hide()
+			
+		if cost != null && skillData != null:
+			cost.text = str(getCost())
+		#TODO when we update the level update the cost
+		
 	get:
 		return level
 		
@@ -47,11 +57,13 @@ func _ready():
 	if level > 0:
 		self.button_pressed = true
 		onPress()
-			
+func getCost() -> int:
+	return (level + 1) * skillData["Cost"]
+	
 func increaseLevel():
 	#check if you have enough money 
 	if level < maxLevel:
-		if Game.tryRemoveCoins(skillData["Cost"]):
+		if Game.tryRemoveCoins(getCost()):
 			level += 1
 			levelUpSound.play()
 			Game.call(skillData["Callable"])
@@ -72,7 +84,7 @@ signal onHoverStart(skillData)
 signal onHoverStop()
 
 func _on_mouse_entered():
-	onHoverStart.emit(skillData)
+	onHoverStart.emit(skillData, level)
 	
 
 

@@ -78,9 +78,11 @@ func AddJackOLanterns():
 	_ShowYourPumpkins.emit()
 	pass
 
+signal _DayOfTheDead()
 const DAY_OF_THE_DEAD = "day_of_the_dead"
 func DayOfTheDead():
 	ActiveUpgrades[DAY_OF_THE_DEAD] = true
+	_DayOfTheDead.emit()
 	pass
 
 const ADD_COSTUMES = "add_costumes"
@@ -241,7 +243,7 @@ var Upgrades = {
 		"Name" : "Vending Machines",
 		"Description" : "Add vending machines around town to sell your pumpkins",
 		"Levels" : 3,
-		"Cost" : 250,
+		"Cost" : 150,
 		"Callable" : "AddVendingMachines"
 	},
 	"add_jack_o_lanterns" : {
@@ -257,7 +259,15 @@ var Upgrades = {
 		"Levels" : 1,
 		"Cost" : 250,
 		"Callable" : "AddBlackCats"
+	},
+	"day_of_the_dead" : {
+		"Name" : "Day of the Dead",
+		"Description" : "A band plays in the cemetary to celebrate the day of the dead from evening to night",
+		"Levels" : 1,
+		"Cost" : 200,
+		"Callable" : "DayOfTheDead"
 	}
+	
 }
 
 func reset():

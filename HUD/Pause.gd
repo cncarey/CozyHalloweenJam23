@@ -4,6 +4,8 @@ extends CanvasLayer
 @onready var OptionsContainer = $OptionsContainer
 @onready var SkillTreeContainer = $SkillsTreeContainer
 
+@onready var resumeButton = $MainContainer/Resume
+
 #sound buses
 @onready var master_bus :int = AudioServer.get_bus_index("Master")
 @onready var music_bus :int = AudioServer.get_bus_index("Music")
@@ -51,6 +53,8 @@ func pause():
 	#ensure the main container is showing
 	hideShow(OptionsContainer, MainContainer)
 	hideShow(SkillTreeContainer, MainContainer)
+	
+	#resumeButton.call("get_focus")
 
 func resumePressed():
 	get_tree().paused = false
