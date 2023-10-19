@@ -13,13 +13,19 @@ extends Node2D
 
 func _ready():
 	Game.connect("_ShowPumpkins",_ShowPumpkins)
+	Game.connect("_ShowYourPumpkins",_ShowYourPumpkins)
 	Game.connect("_AddBlackCats", _AddBlackCats)
 	Game.connect("_AddVendingMachines", _AddVendingMachines)
+	
 	pass
 
 	
 func _ShowPumpkins():
 	tileMap.set_layer_enabled(3, true)
+	pass
+	
+func _ShowYourPumpkins():
+	tileMap.set_layer_enabled(4, true)
 	pass
 
 func _AddBlackCats():

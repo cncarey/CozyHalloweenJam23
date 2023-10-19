@@ -14528,6 +14528,7 @@ script = ExtResource("1_s17g5")
 visible = false
 
 [node name="UI" parent="." instance=ExtResource("1_g62k7")]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("tilemap")]
 position = Vector2(79.8699, 137.915)
@@ -14563,6 +14564,13 @@ layer_3/y_sort_enabled = true
 layer_3/y_sort_origin = 0
 layer_3/z_index = 0
 layer_3/tile_data = PackedInt32Array(1310728, 196612, 2, 1310733, 196612, 2, 1572884, 4, 2, 1572887, 196612, 3, 1572888, 196612, 0, 1572894, 196612, 1, 1572896, 4, 2, 1245225, 4, 2, 1245223, 4, 2, 1245230, 4, 3, 852016, 196612, 0, 852007, 196612, 1, 852009, 65540, 2, 852021, 65540, 2, 1245239, 196612, 2)
+layer_4/name = "Your_Pumpkins"
+layer_4/enabled = false
+layer_4/modulate = Color(1, 1, 1, 1)
+layer_4/y_sort_enabled = true
+layer_4/y_sort_origin = 0
+layer_4/z_index = 0
+layer_4/tile_data = PackedInt32Array(393220, 196612, 2, 393219, 196612, 2, 786435, 196612, 2, 786438, 196612, 3, 786439, 196612, 0, 786443, 196612, 0, 786449, 196612, 0, 786441, 65540, 3, 786433, 65540, 3, 786446, 65540, 3, 786456, 65540, 3, 786455, 4, 2, 786452, 4, 2, 786454, 131076, 2, 786440, 196612, 3, 786442, 196612, 3, 786444, 196612, 2, 786434, 196612, 3, 786445, 196612, 3, 524313, 196612, 3, 327705, 196612, 3, 327695, 65540, 0, 524300, 65540, 0, 720914, 196612, 0, 393222, 196612, 0, 196610, 196612, 0, 196611, 4, 2, 393223, 65540, 2)
 
 [node name="player" parent="." instance=ExtResource("4_a07uq")]
 position = Vector2(79.8699, 137.915)

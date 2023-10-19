@@ -71,9 +71,11 @@ func AddVendingMachines():
 	pass
 
 #decorations
+signal _ShowYourPumpkins()
 const ADD_JACK_O_LANTERNS = "add_jack_o_lanterns"
 func AddJackOLanterns():
 	ActiveUpgrades[ADD_JACK_O_LANTERNS] = true
+	_ShowYourPumpkins.emit()
 	pass
 
 const DAY_OF_THE_DEAD = "day_of_the_dead"
