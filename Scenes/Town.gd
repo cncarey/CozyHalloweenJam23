@@ -20,6 +20,8 @@ func _ready():
 	Game.connect("_AddVendingMachines", _AddVendingMachines)
 	Game.connect("_DayOfTheDead", _DayOfTheDead)
 	Game.connect("_AddCemetery", _AddCemetery)
+	Game.connect("_AddScarecrows", _AddScarecrows)
+	Game.connect("_AddPumpkinPatch", _AddPumpkinPatch)
 	pass
 
 	
@@ -34,6 +36,15 @@ func _ShowYourPumpkins():
 func _AddCemetery():
 	tileMap.set_layer_enabled(5, true)
 	tileMap.set_layer_enabled(6, true)
+	pass
+	
+func _AddScarecrows():
+	tileMap.set_layer_enabled(7, true)
+	pass
+	
+func _AddPumpkinPatch():
+	tileMap.set_layer_enabled(8, true)
+	tileMap.set_layer_enabled(9, true)
 	pass
 
 func _AddBlackCats():

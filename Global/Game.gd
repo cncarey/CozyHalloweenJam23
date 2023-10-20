@@ -114,9 +114,18 @@ func AddTrickOrTreat():
 	ActiveUpgrades[ADD_TRICK_OR_TREAT] = true
 	pass
 	
+signal _AddPumpkinPatch()
 const ADD_PUMPKIN_PATCH = "add_pumpkin_patch"
 func AddPumpkinPatch():
 	ActiveUpgrades[ADD_PUMPKIN_PATCH] = true
+	_AddPumpkinPatch.emit()
+	pass
+	
+signal _AddScarecrows()
+const ADD_SCARECROW = "add_scarecrow"
+func AddScarecrows():
+	ActiveUpgrades[ADD_SCARECROW] = true
+	_AddScarecrows.emit()
 	pass
 
 var GrowSpeed = 4
@@ -126,6 +135,9 @@ var MaxShopSeeds = 15
 var MinVendingDuration = 5
 var MaxVendingDuration = 12
 var CoinsPerSale = 30
+var LengthOfDay = 25
+var LengthOfEvening = 10
+var LengthOfNight = 10
 
 var CanMove = true
 
@@ -157,9 +169,13 @@ func tryRemoveSeeds(decrease) -> bool:
 
 signal noSeeds()
 signal seedCountChanged(seeds)
-
+signal increasedPumpkins()
 @onready var CurrentPumpkins = 0 : 
 	set (value):
+		
+		if value > CurrentPumpkins:
+			increasedPumpkins.emit()
+			
 		CurrentPumpkins = value
 		pumpkinsCountChanged.emit(CurrentPumpkins)
 		if(CurrentPumpkins <= 0):
@@ -280,6 +296,20 @@ var Upgrades = {
 		"Levels" : 1,
 		"Cost" : 200,
 		"Callable" : "DayOfTheDead"
+	},
+	"add_scarecrow" : {
+		"Name" : "Crop Protectors",
+		"Description" : "Scarecrows are added to pumpkin patches to protect the from birds that cause earliy rot",
+		"Levels" : 1,
+		"Cost" : 200,
+		"Callable" : "AddScarecrows"
+	},
+	"add_pumpkin_patch" : {
+		"Name" : "Pick of the Patch",
+		"Description" : "The town now has a pumpkin patch to do nice photoshoots",
+		"Levels" : 1,
+		"Cost" : 150,
+		"Callable" : "AddPumpkinPatch"
 	}
 	
 	

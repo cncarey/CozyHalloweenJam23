@@ -2,9 +2,7 @@ extends Node2D
 
 var ChangeState = false
 
-@export var LengthOfDay = 25
-@export var LengthOfEvening = 10
-@export var LengthOfNight = 10
+
 
 @onready var timer : Timer = $Timer
 @onready var animation: AnimationPlayer = $AnimationPlayer
@@ -28,17 +26,17 @@ func setTimeOfDay():
 func playTimeOfDay():
 	match Game.CurrentTimeOfDay:
 		Game.TimeOfDay.Day:
-			timer.start(LengthOfDay)
+			timer.start(Game.LengthOfDay)
 			if Game.playNightAnimation:
 				animation.play("NightToDay")
 			pass
 		Game.TimeOfDay.Evening:
-			timer.start(LengthOfNight)
+			timer.start(Game.LengthOfNight)
 			if Game.playNightAnimation:
 				animation.play("DayToEvening")
 			pass
 		Game.TimeOfDay.Night:
-			timer.start(LengthOfEvening)
+			timer.start(Game.LengthOfEvening)
 			if Game.playNightAnimation:
 				animation.play("EveningToNight")
 	

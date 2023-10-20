@@ -73,7 +73,7 @@ func increaseLevel():
 	
 func onPress():
 	panel.show_behind_parent = true
-	line.default_color = Color.html("ffff52")
+	line.default_color = Color.html("a96200")
 	
 	var skills = get_children()
 	for skill in skills:

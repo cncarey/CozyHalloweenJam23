@@ -8,6 +8,7 @@ enum GrowingStage { seed = 0}
 @export var stage = 0
 var isTouching: bool = false
 var hasFruit : bool = true
+var isRotten: bool = false
 signal Harvested()
 
 func _ready():
@@ -22,16 +23,27 @@ func _process(_delta):
 			plant.frame = 99
 		3:
 			plant.frame = 98
-		4: 
+		4,5: 
 			plant.frame = 97
-		#5:
+		6:
+			plant.frame = 97
+			plant.modulate = Color.html("12431c")
 			#plant.frame = 96
 
 
 func goToNextStage():
-	if stage <= 5:
+	if stage <= 3:
 		stage += 1
 		timer.start(getGrowSpeed())
+	elif stage == 4: #startRotTimer
+		stage += 1
+		var timePerDay = Game.LengthOfDay + Game.LengthOfNight + Game.LengthOfEvening
+		var daysToRot = 3 if Game.ActiveUpgrades.has(Game.ADD_SCARECROW) else 2
+		timer.start(timePerDay * daysToRot)
+	elif stage >= 5:
+		stage +=1
+		isRotten = true	
+	
 	pass 
 	
 func getGrowSpeed() -> int:
@@ -53,7 +65,9 @@ func plantExited(_body):
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("interact") && isTouching && stage >= 4 && hasFruit:
 		hasFruit = false
-		Game.CurrentPumpkins += 1
+		
+		if !isRotten:
+			Game.CurrentPumpkins += 1
 		Harvested.emit()
 		queue_free()
 

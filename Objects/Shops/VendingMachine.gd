@@ -29,6 +29,14 @@ func tryRemovePumpkins(decrease) -> bool:
 		CurrentPumpkins -= decrease
 		return true
 		
+func _ready():
+	Game.connect("increasedPumpkins", playerIncreasedPumpkins)
+		
+func playerIncreasedPumpkins():
+	await get_tree().create_timer(1.5).timeout
+	if popupOpened:
+		popupOpened = false		
+		
 func makeSale():
 	if tryRemovePumpkins(1):
 		if Game.ActiveUpgrades.has(Game.INCREASE_COINS):

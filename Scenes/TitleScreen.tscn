@@ -28,4 +28,22 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "Play"
 
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -86.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.960784, 0.560784, 0.145098, 1)
+text = "Version 3.1"
+
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="startGame"]

@@ -170,8 +170,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w0c51"]
-radius = 5.0
-height = 14.0
+radius = 3.0
+height = 10.0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f506i"]
 animation = &"idleDown"
@@ -251,7 +251,7 @@ vframes = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, -6)
+position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_w0c51")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

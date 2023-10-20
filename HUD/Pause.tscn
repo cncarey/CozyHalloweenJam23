@@ -8,8 +8,12 @@ process_mode = 3
 script = ExtResource("1_kv4mq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1020.0
-offset_bottom = 594.0
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.788235, 0.788235, 0.788235, 1)
 
 [node name="MainContainer" type="VBoxContainer" parent="."]
@@ -140,6 +144,7 @@ size_flags_horizontal = 4
 text = "Back"
 
 [node name="SkillsTreeContainer" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -168,6 +173,9 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 190
 theme_override_constants/margin_bottom = 20
 
 [node name="Button" type="Button" parent="SkillsTreeContainer/MarginContainer"]
