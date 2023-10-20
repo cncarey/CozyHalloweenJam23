@@ -77,6 +77,13 @@ func AddJackOLanterns():
 	ActiveUpgrades[ADD_JACK_O_LANTERNS] = true
 	_ShowYourPumpkins.emit()
 	pass
+	
+signal _AddCemetery()
+const ADD_Cemetery = "add_cemerery"
+func AddCemetery():
+	ActiveUpgrades[ADD_Cemetery] = true
+	_AddCemetery.emit()
+	pass
 
 signal _DayOfTheDead()
 const DAY_OF_THE_DEAD = "day_of_the_dead"
@@ -250,7 +257,7 @@ var Upgrades = {
 		"Name" : "Pumpkins Around Town",
 		"Description" : "Decorate the town with pumpkins",
 		"Levels" : 1,
-		"Cost" : 250,
+		"Cost" : 100,
 		"Callable" : "AddJackOLanterns"
 	},
 	"add_black_cats" : {
@@ -260,6 +267,13 @@ var Upgrades = {
 		"Cost" : 250,
 		"Callable" : "AddBlackCats"
 	},
+	"add_cemerery" : {
+		"Name" : "A Place to Rest",
+		"Description" : "A cemetary is added to the town to remeber those who have passed",
+		"Levels" : 1,
+		"Cost" : 150,
+		"Callable" : "AddCemetery"
+	},
 	"day_of_the_dead" : {
 		"Name" : "Day of the Dead",
 		"Description" : "A band plays in the cemetary to celebrate the day of the dead from evening to night",
@@ -267,6 +281,7 @@ var Upgrades = {
 		"Cost" : 200,
 		"Callable" : "DayOfTheDead"
 	}
+	
 	
 }
 

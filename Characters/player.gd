@@ -16,7 +16,7 @@ var statageManager: StateManager
 @export var isLite : bool = false
 @onready var light : PointLight2D = $PointLight2D
 
-var tween : Tween
+@onready var tween : Tween
 
 func _ready():
 	statageManager = StateManager.new()

@@ -7,7 +7,7 @@ enum GrowingStage { seed = 0}
 
 @export var stage = 0
 var isTouching: bool = false
-
+var hasFruit : bool = true
 signal Harvested()
 
 func _ready():
@@ -51,7 +51,8 @@ func plantExited(_body):
 	pass
 	
 func _unhandled_input(_event):
-	if Input.is_action_just_pressed("interact") && isTouching && stage >= 4:
+	if Input.is_action_just_pressed("interact") && isTouching && stage >= 4 && hasFruit:
+		hasFruit = false
 		Game.CurrentPumpkins += 1
 		Harvested.emit()
 		queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cxgatpplm4rgv"]
+[gd_scene load_steps=13 format=3 uid="uid://cxgatpplm4rgv"]
 
 [ext_resource type="Script" path="res://HUD/skill_tree.gd" id="1_5mkcn"]
 [ext_resource type="PackedScene" uid="uid://defx6wlu4icmm" path="res://HUD/SkillButton.tscn" id="1_rkbsh"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://28r6la46clgw" path="res://Assets/SkillTreeIcons/011-candy-bag.png" id="4_fd685"]
 [ext_resource type="Texture2D" uid="uid://bmaimmxw1n1hi" path="res://Assets/SkillTreeIcons/032-black-cat-1.png" id="5_n5rn8"]
 [ext_resource type="Texture2D" uid="uid://cuuqej0saywoe" path="res://Assets/SkillTreeIcons/014-bats.png" id="5_nrg8m"]
+[ext_resource type="Texture2D" uid="uid://4xhwjrvc7rs" path="res://Assets/SkillTreeIcons/020-cemetery.png" id="6_4utnf"]
 [ext_resource type="Texture2D" uid="uid://dyc7jtxmqvpu5" path="res://Assets/SkillTreeIcons/021-invitation.png" id="6_o7fx5"]
 [ext_resource type="Texture2D" uid="uid://ctlpbpoy7ah4l" path="res://Assets/SkillTreeIcons/030-cookies.png" id="6_yc1a3"]
 [ext_resource type="Texture2D" uid="uid://xbdsrvonoiew" path="res://Assets/SkillTreeIcons/023-eye.png" id="7_8fiv5"]
@@ -76,6 +77,19 @@ offset_left = 118.0
 offset_top = -55.0
 offset_right = 166.0
 offset_bottom = -7.0
+tooltip_text = "Add Costumes
+1 - Neighbors
+2  - You "
+disabled = true
+texture_normal = ExtResource("6_4utnf")
+skillName = "add_cemerery"
+
+[node name="SkillButton7" parent="SkillButton/SkillButton2/SkillButton6" instance=ExtResource("1_rkbsh")]
+layout_mode = 0
+offset_left = -73.0
+offset_top = -126.0
+offset_right = -25.0
+offset_bottom = -78.0
 tooltip_text = "Add Costumes
 1 - Neighbors
 2  - You "
@@ -196,6 +210,8 @@ text = "0 Coins"
 [connection signal="onHoverStop" from="SkillButton/SkillButton2/SkillButton5" to="." method="clearInfo"]
 [connection signal="onHoverStart" from="SkillButton/SkillButton2/SkillButton6" to="." method="setInfo"]
 [connection signal="onHoverStop" from="SkillButton/SkillButton2/SkillButton6" to="." method="clearInfo"]
+[connection signal="onHoverStart" from="SkillButton/SkillButton2/SkillButton6/SkillButton7" to="." method="setInfo"]
+[connection signal="onHoverStop" from="SkillButton/SkillButton2/SkillButton6/SkillButton7" to="." method="clearInfo"]
 [connection signal="onHoverStart" from="SkillButton/SkillButton5" to="." method="setInfo"]
 [connection signal="onHoverStop" from="SkillButton/SkillButton5" to="." method="clearInfo"]
 [connection signal="onHoverStart" from="SkillButton/SkillButton5/SkillButton3" to="." method="setInfo"]
