@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://oqa2r8sbrkdf"]
+[gd_scene load_steps=13 format=3 uid="uid://oqa2r8sbrkdf"]
 
 [ext_resource type="Script" path="res://HUD/UI.gd" id="1_8rctm"]
 [ext_resource type="Texture2D" uid="uid://bom6rgqmqegu3" path="res://Assets/Crop_Spritesheet.png" id="1_57wov"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://1fo5gc2vix0c" path="res://Assets/sunset.svg" id="3_5h1ik"]
 [ext_resource type="Texture2D" uid="uid://d0tuhwurvmfck" path="res://Assets/moon-fill.svg" id="4_8akpb"]
 [ext_resource type="Texture2D" uid="uid://pqfcgnysbnwb" path="res://Assets/Sprite sheet for Basic Pack.png" id="4_phjrd"]
+[ext_resource type="Texture2D" uid="uid://dtkl8mcpebe71" path="res://Assets/SkillTreeIcons/040-halloween-party-1.png" id="8_isnk8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mhpxq"]
 atlas = ExtResource("1_57wov")
@@ -90,6 +91,12 @@ texture = SubResource("AtlasTexture_8ibjk")
 [node name="Coins" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/CoinHCB"]
 layout_mode = 2
 text = "Coin Count"
+
+[node name="UpgradeAvailable" type="TextureRect" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/CoinHCB"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("8_isnk8")
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2

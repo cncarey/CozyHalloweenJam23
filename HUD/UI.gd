@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var CoinLabel = $VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/CoinHCB/Coins
 @onready var TimeOfDayIcon = $VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/TimeOfDayIcon
 @onready var TimeOfDayLabel = $VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer/TimeOfDayLabel
+@onready var UpgradeIcon = $VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/CoinHCB/UpgradeAvailable
 
 @export var dayTexture : Texture
 @export var eveningTexture : Texture
@@ -43,6 +44,16 @@ extends CanvasLayer
 	get:
 		return CoinCount
 
+@onready var CanPurchase = Game.CanPurchase:
+	set (value):
+		CanPurchase = value
+		
+		if UpgradeIcon != null:
+			UpgradeIcon.visible = CanPurchase
+		#TODO display something
+	get:
+		return CanPurchase
+
 @onready var CurrentTimeOfDay : Game.TimeOfDay = Game.CurrentTimeOfDay:
 	set (value):
 		CurrentTimeOfDay = value
@@ -77,6 +88,7 @@ func _ready():
 	Game.connect("seedCountChanged",setSeedCount)
 	Game.connect("pumpkinsCountChanged",setPumpkinCount)
 	Game.connect("coinsCountChanged", setCoinCount)
+	Game.connect("canPurchaseChanged", setCanPurchase)
 	Game.connect("CurrentTimeOfDayChanged", setCurrentTimeOfDay)
 
 func setSeedCount(sc):
@@ -87,6 +99,9 @@ func setPumpkinCount(pc):
 
 func setCoinCount(cc):
 	CoinCount = cc
+	
+func setCanPurchase(cp):
+	CanPurchase = cp
 
 func setCurrentTimeOfDay(ctod):
 	CurrentTimeOfDay = ctod

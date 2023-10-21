@@ -57,6 +57,9 @@ func _ready():
 	if level > 0:
 		self.button_pressed = true
 		onPress()
+	else:
+		if !self.disabled && !Game.NextUpgrades.has(skillData["Name"]):
+					Game.NextUpgrades[skillData["Name"]] = getCost()
 func getCost() -> int:
 	return (level + 1) * skillData["Cost"]
 	
@@ -75,10 +78,22 @@ func onPress():
 	panel.show_behind_parent = true
 	line.default_color = Color.html("a96200")
 	
+	#if the current level is less than the max update the cost of the level
+	
+	if level < maxLevel:
+		Game.NextUpgrades[skillData["Name"]] = getCost()
+	elif Game.NextUpgrades.has(skillData["Name"]):
+			Game.NextUpgrades.erase(skillData["Name"])
+	
 	var skills = get_children()
 	for skill in skills:
 		if skill is SkillNode and level == 1:
 			skill.disabled = false
+			#add the cost of the child to next levels
+			if skill.skillData !=null:
+				if !Game.NextUpgrades.has(skill.skillData["Name"]):
+					Game.NextUpgrades[skill.skillData["Name"]] = skill.skillData["Cost"]
+	
 
 signal onHoverStart(skillData)
 signal onHoverStop()
@@ -86,8 +101,6 @@ signal onHoverStop()
 func _on_mouse_entered():
 	onHoverStart.emit(skillData, level)
 	
-
-
 func _on_mouse_exited():
 	onHoverStop.emit()
 	pass # Replace with function body.

@@ -83,7 +83,6 @@ func resetDay():
 	else:
 		wantsPumpkinToday = wantsPumpkin == 1
 	
-	print(str(skin) + ": " + str(wantsPumpkinToday) + " " + str(curDesire) )
 	pass
 
 func _physics_process(delta):

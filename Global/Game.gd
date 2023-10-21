@@ -2,6 +2,7 @@ extends Node
 var playNightAnimation = true
 
 var ActiveUpgrades = {}
+var NextUpgrades = {}
 #player
 const DECREASE_GROW_SPEED = "decrease_grow_speed"
 func DecreaseGrowSpeed():
@@ -200,12 +201,22 @@ func tryRemovePumpkins(decrease) -> bool:
 signal noPumpkins()
 signal pumpkinsCountChanged(pumpkins)
 
+@onready var CanPurchase = false:
+	set (value):
+		CanPurchase = value
+		canPurchaseChanged.emit(CanPurchase)
+	get:
+		return CanPurchase
+signal canPurchaseChanged(purchases)
+
 @onready var CurrentCoins = 0 : 
 	set (value):
 		CurrentCoins = value
 		coinsCountChanged.emit(CurrentCoins)
 		if(CurrentCoins <= 0):
 			noCoins.emit()
+			
+		CanPurchase = NextUpgrades.values().any(func(cost): return CurrentCoins >= cost)
 	get:
 		return CurrentCoins
 		
@@ -335,3 +346,4 @@ func reset():
 	self.CurrentTimeOfDay = TimeOfDay.Day
 	
 	self.ActiveUpgrades = {}
+	self.NextUpgrades = {}
