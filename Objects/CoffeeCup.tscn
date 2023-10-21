@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://doiua2d6aikpm"]
+
+[ext_resource type="Texture2D" uid="uid://dnj13hph8qa85" path="res://Assets/coffees.png" id="1_dey8c"]
+[ext_resource type="Script" path="res://Objects/CoffeeCup.gd" id="2_e5i44"]
+
+[node name="Sprite2D" type="Sprite2D"]
+z_index = 3
+position = Vector2(-15.0168, 55.4509)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_dey8c")
+hframes = 3
+script = ExtResource("2_e5i44")

@@ -1,0 +1,160 @@
+[gd_scene load_steps=15 format=3 uid="uid://bkt7320ttuusp"]
+
+[ext_resource type="Texture2D" uid="uid://bskl74ytgdh42" path="res://Assets/Serene_Village_16x16.png" id="1_774hl"]
+[ext_resource type="Script" path="res://Objects/Shops/CoffeeShop.gd" id="1_ncjgd"]
+[ext_resource type="Texture2D" uid="uid://dmhrnhr1rj6v1" path="res://Assets/campfire_16x16.png" id="2_ablmf"]
+[ext_resource type="AudioStream" uid="uid://csd70hl0c3oii" path="res://Assets/Sounds/Fire.ogg" id="4_df86e"]
+[ext_resource type="Texture2D" uid="uid://bfpwmaq32nw3" path="res://Assets/PumpkinSpiceCollection.png" id="5_407vy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxko6"]
+atlas = ExtResource("1_774hl")
+region = Rect2(165.478, 336.295, 69.9259, 58.963)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttggk"]
+size = Vector2(58, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xp1f"]
+atlas = ExtResource("1_774hl")
+region = Rect2(261.388, 533.669, 36.7408, 16.5926)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlhg4"]
+atlas = ExtResource("2_ablmf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3n323"]
+atlas = ExtResource("2_ablmf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2f45"]
+atlas = ExtResource("2_ablmf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxqe5"]
+atlas = ExtResource("2_ablmf")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ahcvd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlhg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3n323")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2f45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxqe5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7lpn"]
+atlas = ExtResource("5_407vy")
+region = Rect2(64.8447, 0.184435, 13.9588, 15.6708)
+
+[node name="CoffeeShop" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_ncjgd")
+
+[node name="shop" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_nxko6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10.5)
+shape = SubResource("RectangleShape2D_ttggk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-44.9809, 77.7956)
+texture = SubResource("AtlasTexture_5xp1f")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-0.251045, 52.2361)
+texture = SubResource("AtlasTexture_5xp1f")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(57.3897, 77.7956)
+texture = SubResource("AtlasTexture_5xp1f")
+
+[node name="Fire1" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-44, 72)
+sprite_frames = SubResource("SpriteFrames_ahcvd")
+frame_progress = 0.230868
+
+[node name="Fire2" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, 47)
+sprite_frames = SubResource("SpriteFrames_ahcvd")
+frame_progress = 0.230868
+
+[node name="FFire3s" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(58, 73)
+sprite_frames = SubResource("SpriteFrames_ahcvd")
+frame_progress = 0.230868
+
+[node name="CoffeeCupPoints" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="CoffeeCupPoints"]
+position = Vector2(-59.7262, 77.117)
+
+[node name="Marker2D2" type="Marker2D" parent="CoffeeCupPoints"]
+position = Vector2(-29.664, 73.6737)
+
+[node name="Marker2D3" type="Marker2D" parent="CoffeeCupPoints"]
+position = Vector2(-29.664, 80.2953)
+
+[node name="Marker2D4" type="Marker2D" parent="CoffeeCupPoints"]
+position = Vector2(-14.8315, 47.452)
+
+[node name="Marker2D5" type="Marker2D" parent="CoffeeCupPoints"]
+position = Vector2(15.3632, 55.7953)
+
+[node name="Marker2D6" type="Marker2D" parent="CoffeeCupPoints"]
+position = Vector2(43.3065, 74.2034)
+
+[node name="Marker2D7" type="Marker2D" parent="CoffeeCupPoints"]
+position = Vector2(73.104, 81.4872)
+
+[node name="CustomerPoints" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="CustomerPoints"]
+position = Vector2(-42.4835, 59.1062)
+
+[node name="Marker2D2" type="Marker2D" parent="CustomerPoints"]
+position = Vector2(54.0601, 56.3251)
+
+[node name="TempObjects" type="Node2D" parent="."]
+
+[node name="FirePit1" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-44.2051, 75.263)
+stream = ExtResource("4_df86e")
+volume_db = -7.0
+autoplay = true
+max_distance = 40.0
+bus = &"SoundFx"
+
+[node name="FirePit2" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0.822044, 49.1602)
+stream = ExtResource("4_df86e")
+volume_db = -7.0
+autoplay = true
+max_distance = 40.0
+bus = &"SoundFx"
+
+[node name="FirePit3" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(58.2979, 76.0576)
+stream = ExtResource("4_df86e")
+volume_db = -7.0
+autoplay = true
+max_distance = 40.0
+bus = &"SoundFx"
+
+[node name="PumpkinSpiceCollection" type="Sprite2D" parent="."]
+position = Vector2(-1, -6)
+texture = SubResource("AtlasTexture_s7lpn")

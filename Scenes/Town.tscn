@@ -14735,7 +14735,7 @@ visible = false
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("tilemap")]
 position = Vector2(79.8699, 137.915)
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(2.75, 2.75)
 script = ExtResource("1_d00tp")
 tilemap = NodePath("../TileMap")
 
@@ -14962,10 +14962,13 @@ position = Vector2(1295.53, 700.977)
 position = Vector2(398, 396)
 
 [node name="Marker2D2" type="Marker2D" parent="VendingMachinePoints"]
-position = Vector2(364, 615)
+position = Vector2(503, 550)
 
 [node name="Marker2D3" type="Marker2D" parent="VendingMachinePoints"]
 position = Vector2(661.894, 518.769)
 
 [node name="DotDBand" type="Marker2D" parent="."]
 position = Vector2(215.661, 573.073)
+
+[node name="CoffeeShopPoint" type="Marker2D" parent="."]
+position = Vector2(460.928, 530.908)

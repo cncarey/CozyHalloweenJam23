@@ -127,6 +127,13 @@ func AddScarecrows():
 	ActiveUpgrades[ADD_SCARECROW] = true
 	_AddScarecrows.emit()
 	pass
+	
+signal _AddCoffeeShop()
+const ADD_COFFEE_SHOP = "add_coffee_shop"
+func AddCoffeeShop():
+	ActiveUpgrades[ADD_COFFEE_SHOP] = true
+	_AddCoffeeShop.emit()
+	pass
 
 var GrowSpeed = 4
 var PumpkinDesireLevel = 4
@@ -310,8 +317,14 @@ var Upgrades = {
 		"Levels" : 1,
 		"Cost" : 150,
 		"Callable" : "AddPumpkinPatch"
+	},
+	"add_coffee_shop" : {
+		"Name" : "Pumpkin Spice Season",
+		"Description" : "Open a coffee shop from dawn to dusk that has a few more people to buy pumpkins",
+		"Levels" : 1,
+		"Cost" : 250,
+		"Callable" : "AddCoffeeShop"
 	}
-	
 	
 }
 
