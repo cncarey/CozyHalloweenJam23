@@ -7,6 +7,8 @@ var popupOpened :bool = false
 @onready var salesTimer :Timer = $Timer
 @onready var stats : Label = $Stats
 
+@onready var sprite : Sprite2D= $PumpkinVendingMachine
+
 var howMany = preload("res://HUD/SelectMany.tscn")
 
 @onready var CurrentPumpkins = 0 : 
@@ -66,12 +68,14 @@ func maxPumpkinLoad() -> int:
 	
 func vendingEntered(_body):
 	isTouching = true
-	#TouchIndicator.show()
+	if sprite.material != null:
+		sprite.material.set_shader_parameter("width", 1)
 	pass # Replace with function body.
 
 func vendingExited(_body):
 	isTouching = false
-	#TouchIndicator.hide()
+	if sprite.material != null:
+		sprite.material.set_shader_parameter("width", 0)
 	pass
 	
 signal OpenPopUp(popup)

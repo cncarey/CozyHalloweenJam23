@@ -151,10 +151,14 @@ func setRandomState():
 
 func npcEntered(_body):
 	isTouching = true
+	if ani.material != null:
+		ani.material.set_shader_parameter("width", 1)
 	pass 
 
 func npcExited(_body):
 	isTouching = false
+	if ani.material != null:
+		ani.material.set_shader_parameter("width", 0)
 	pass
 
 func _unhandled_input(_event):

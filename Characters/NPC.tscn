@@ -1,5 +1,6 @@
-[gd_scene load_steps=105 format=3 uid="uid://bfbvbm8knujhl"]
+[gd_scene load_steps=107 format=3 uid="uid://bfbvbm8knujhl"]
 
+[ext_resource type="Shader" path="res://Characters/Outline.gdshader" id="1_fnqr5"]
 [ext_resource type="Script" path="res://Characters/NPC.gd" id="1_or1at"]
 [ext_resource type="PackedScene" uid="uid://bph6dk5nw8wwf" path="res://Characters/WanderController.tscn" id="2_nl8ud"]
 [ext_resource type="Texture2D" uid="uid://6u1pwjtsggw2" path="res://Assets/SmallBurg_village_pack_v3.2_free/premades/premade_01/character_premade_01_idle.png" id="2_ye80v"]
@@ -23,6 +24,15 @@
 [ext_resource type="Texture2D" uid="uid://bnr6hidevq3tn" path="res://Assets/SmallBurg_village_pack_v3.2_free/premades/premade_10/character_premade_10_idle.png" id="18_n5b5m"]
 [ext_resource type="Texture2D" uid="uid://dtf2wo7yilkrx" path="res://Assets/SmallBurg_village_pack_v3.2_free/premades/premade_10/character_premade_10_walk.png" id="19_uuhv4"]
 [ext_resource type="AudioStream" uid="uid://bq74nhv4v36k8" path="res://Assets/Sounds/sale.ogg" id="23_ivmod"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aa0qr"]
+resource_local_to_scene = true
+shader = ExtResource("1_fnqr5")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1jkxa"]
 atlas = ExtResource("2_ye80v")
@@ -625,7 +635,7 @@ animations = [{
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bbv1a"]
-radius = 19.0
+radius = 25.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_of8dh"]
 radius = 68.0
@@ -672,6 +682,7 @@ collision_mask = 0
 script = ExtResource("1_or1at")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_aa0qr")
 sprite_frames = SubResource("SpriteFrames_rl4ev")
 animation = &"9_walk"
 

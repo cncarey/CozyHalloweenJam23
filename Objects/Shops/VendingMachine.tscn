@@ -1,8 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://cy6b3aepqyslk"]
+[gd_scene load_steps=8 format=3 uid="uid://cy6b3aepqyslk"]
 
 [ext_resource type="Script" path="res://Objects/Shops/VendingMachine.gd" id="1_2e3nw"]
 [ext_resource type="Texture2D" uid="uid://d2ydxs6esy27u" path="res://Assets/pumpkinVendingMachine.png" id="2_1mnh7"]
+[ext_resource type="Shader" path="res://Characters/Outline.gdshader" id="2_k7us0"]
 [ext_resource type="AudioStream" uid="uid://bq74nhv4v36k8" path="res://Assets/Sounds/sale.ogg" id="3_11rs4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6lvk2"]
+resource_local_to_scene = true
+shader = ExtResource("2_k7us0")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3r0qn"]
 size = Vector2(14, 16)
@@ -16,6 +26,7 @@ collision_layer = 2
 script = ExtResource("1_2e3nw")
 
 [node name="PumpkinVendingMachine" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_6lvk2")
 position = Vector2(0, -8)
 texture = ExtResource("2_1mnh7")
 

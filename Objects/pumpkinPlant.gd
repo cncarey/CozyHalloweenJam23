@@ -54,12 +54,14 @@ func getGrowSpeed() -> int:
 		
 func plantEntered(_body):
 	isTouching = true
-	#TouchIndicator.show()
-	pass # Replace with function body.
+	if stage >= 4:
+		if plant.material != null:
+			plant.material.set_shader_parameter("width", 1)
 
 func plantExited(_body):
 	isTouching = false
-	#TouchIndicator.hide()
+	if plant.material != null:
+		plant.material.set_shader_parameter("width", 0)
 	pass
 	
 func _unhandled_input(_event):
