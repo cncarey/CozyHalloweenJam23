@@ -26,9 +26,7 @@ func _process(_delta):
 		4,5: 
 			plant.frame = 97
 		6:
-			plant.frame = 97
-			plant.modulate = Color.html("12431c")
-			#plant.frame = 96
+			plant.frame = 84
 
 
 func goToNextStage():

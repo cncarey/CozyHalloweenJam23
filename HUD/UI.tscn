@@ -65,9 +65,11 @@ layout_mode = 2
 [node name="SeedsIcon" type="TextureRect" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/SeedHCB"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_mhpxq")
+expand_mode = 3
 
 [node name="Seeds" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/SeedHCB"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "Seed Count"
 
 [node name="PumpkinHCB" type="HBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
@@ -76,9 +78,11 @@ layout_mode = 2
 [node name="PumpkinIcon" type="TextureRect" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/PumpkinHCB"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_k6tj3")
+expand_mode = 3
 
 [node name="Pumpkins" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/PumpkinHCB"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "Pumkin Count"
 
 [node name="CoinHCB" type="HBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
@@ -87,9 +91,11 @@ layout_mode = 2
 [node name="CoinIcon" type="TextureRect" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/CoinHCB"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_8ibjk")
+expand_mode = 3
 
 [node name="Coins" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/CoinHCB"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "Coin Count"
 
 [node name="UpgradeAvailable" type="TextureRect" parent="VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/CoinHCB"]
@@ -122,7 +128,9 @@ layout_mode = 2
 [node name="TimeOfDayIcon" type="TextureRect" parent="VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+expand_mode = 3
 
 [node name="TimeOfDayLabel" type="Label" parent="VBoxContainer/MarginContainer2/MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "Day"

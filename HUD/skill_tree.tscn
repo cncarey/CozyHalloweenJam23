@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cxgatpplm4rgv"]
+[gd_scene load_steps=17 format=3 uid="uid://cxgatpplm4rgv"]
 
 [ext_resource type="Script" path="res://HUD/skill_tree.gd" id="1_5mkcn"]
 [ext_resource type="PackedScene" uid="uid://defx6wlu4icmm" path="res://HUD/SkillButton.tscn" id="1_rkbsh"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://xbdsrvonoiew" path="res://Assets/SkillTreeIcons/023-eye.png" id="7_8fiv5"]
 [ext_resource type="Texture2D" uid="uid://hm76yuj0xfwv" path="res://Assets/SkillTreeIcons/041-vending-machine.png" id="8_6erp4"]
 [ext_resource type="Texture2D" uid="uid://bufruaofpeisw" path="res://Assets/SkillTreeIcons/001-halloween.png" id="8_lknht"]
+[ext_resource type="Texture2D" uid="uid://emq21vuru5vd" path="res://Assets/SkillTreeIcons/004-garland.png" id="9_7fpo8"]
 [ext_resource type="Texture2D" uid="uid://behkefquydsh8" path="res://Assets/SkillTreeIcons/035-sesame.png" id="9_8hpvq"]
 [ext_resource type="Texture2D" uid="uid://bkws7l1x62cqx" path="res://Assets/SkillTreeIcons/036-scarecrow.png" id="10_7ov51"]
 
@@ -50,10 +51,10 @@ skillName = "show_pumpkins"
 
 [node name="SkillButton2" parent="SkillButton" instance=ExtResource("1_rkbsh")]
 layout_mode = 0
-offset_left = 222.0
-offset_top = -96.0
-offset_right = 270.0
-offset_bottom = -48.0
+offset_left = 184.0
+offset_top = -95.0
+offset_right = 232.0
+offset_bottom = -47.0
 tooltip_text = "Add Costumes
 1 - Neighbors
 2  - You "
@@ -119,6 +120,18 @@ offset_left = 130.0
 offset_top = -95.0
 offset_right = 178.0
 offset_bottom = -47.0
+tooltip_text = "Add Costumes
+1 - Neighbors
+2  - You "
+disabled = true
+texture_normal = ExtResource("9_7fpo8")
+skillName = "add_garland"
+
+[node name="SkillButton9" parent="SkillButton/SkillButton2/SkillButton8" instance=ExtResource("1_rkbsh")]
+layout_mode = 0
+offset_top = -131.0
+offset_right = 48.0
+offset_bottom = -83.0
 tooltip_text = "Add Costumes
 1 - Neighbors
 2  - You "
@@ -228,14 +241,19 @@ layout_mode = 2
 
 [node name="SkillName" type="Label" parent="Panel2/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
+autowrap_mode = 2
 
 [node name="SkillDescription" type="RichTextLabel" parent="Panel2/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
 fit_content = true
+autowrap_mode = 2
 
 [node name="SkillCost" type="Label" parent="Panel2/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_font_sizes/font_size = 24
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -261,6 +279,8 @@ text = "Make It Festive"
 [connection signal="onHoverStop" from="SkillButton/SkillButton2/SkillButton6/SkillButton7" to="." method="clearInfo"]
 [connection signal="onHoverStart" from="SkillButton/SkillButton2/SkillButton8" to="." method="setInfo"]
 [connection signal="onHoverStop" from="SkillButton/SkillButton2/SkillButton8" to="." method="clearInfo"]
+[connection signal="onHoverStart" from="SkillButton/SkillButton2/SkillButton8/SkillButton9" to="." method="setInfo"]
+[connection signal="onHoverStop" from="SkillButton/SkillButton2/SkillButton8/SkillButton9" to="." method="clearInfo"]
 [connection signal="onHoverStart" from="SkillButton/SkillButton5" to="." method="setInfo"]
 [connection signal="onHoverStop" from="SkillButton/SkillButton5" to="." method="clearInfo"]
 [connection signal="onHoverStart" from="SkillButton/SkillButton5/SkillButton3" to="." method="setInfo"]

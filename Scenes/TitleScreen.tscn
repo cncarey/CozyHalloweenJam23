@@ -26,6 +26,7 @@ grow_vertical = 2
 [node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
 text = "Play"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
@@ -44,6 +45,7 @@ theme_override_constants/margin_bottom = 15
 [node name="Label" type="Label" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.960784, 0.560784, 0.145098, 1)
-text = "Version 4.0"
+theme_override_font_sizes/font_size = 24
+text = "Version 5 - final"
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="startGame"]

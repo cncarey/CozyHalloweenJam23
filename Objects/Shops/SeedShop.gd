@@ -1,6 +1,8 @@
 extends StaticBody2D
 
 var isTouching: bool = false
+
+@onready var shop : Sprite2D = $Shop
 @onready var seedPickUpSound : AudioStreamPlayer = $SeedPickUpSound
 
 @onready var CurrentSeeds = 10 : 
@@ -41,12 +43,14 @@ func setTimeOfDay(tod):
 
 func doorEntered(_body):
 	isTouching = true
-	#TouchIndicator.show()
+	if shop.material != null:
+		shop.material.set_shader_parameter("width", 1)
 	pass # Replace with function body.
 
 func doorExited(_body):
 	isTouching = false
-	#TouchIndicator.hide()
+	if shop.material != null:
+		shop.material.set_shader_parameter("width", 0)
 	pass
 	
 func _unhandled_input(_event):

@@ -26,6 +26,7 @@ func _ready():
 	Game.connect("_AddScarecrows", _AddScarecrows)
 	Game.connect("_AddPumpkinPatch", _AddPumpkinPatch)
 	Game.connect("_AddCoffeeShop", _AddCoffeeShop)
+	Game.connect("_AddGarland", _AddGarland)
 	pass
 
 	
@@ -49,6 +50,10 @@ func _AddScarecrows():
 func _AddPumpkinPatch():
 	tileMap.set_layer_enabled(8, true)
 	tileMap.set_layer_enabled(9, true)
+	pass
+	
+func _AddGarland():
+	tileMap.set_layer_enabled(10, true)
 	pass
 
 func _AddBlackCats():

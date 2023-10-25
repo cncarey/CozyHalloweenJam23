@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://c6yu73pq52gp0"]
+
+[ext_resource type="FontFile" uid="uid://dtatarbrquj2" path="res://Assets/monogram-extended.ttf" id="1_rknch"]
+
+[resource]
+base_font = ExtResource("1_rknch")

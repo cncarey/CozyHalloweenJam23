@@ -34,24 +34,28 @@ theme_override_constants/separation = 7
 layout_mode = 2
 theme_override_colors/font_color = Color(0.662745, 0.384314, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.988235, 0.776471, 0.639216, 1)
+theme_override_font_sizes/font_size = 36
 text = "Paused"
 horizontal_alignment = 1
 
 [node name="Resume" type="Button" parent="MainContainer"]
 layout_mode = 2
 focus_next = NodePath("../Options")
+theme_override_font_sizes/font_size = 24
 text = "Resume"
 
 [node name="Options" type="Button" parent="MainContainer"]
 layout_mode = 2
 focus_next = NodePath("../Skill Tree")
 focus_previous = NodePath("../Resume")
+theme_override_font_sizes/font_size = 24
 text = "Options"
 
 [node name="Skill Tree" type="Button" parent="MainContainer"]
 layout_mode = 2
 focus_next = NodePath("../VBoxContainer/Quit")
 focus_previous = NodePath("../Options")
+theme_override_font_sizes/font_size = 24
 text = "Skill Tree"
 
 [node name="VBoxContainer" type="MarginContainer" parent="MainContainer"]
@@ -61,6 +65,7 @@ theme_override_constants/margin_top = 100
 [node name="Quit" type="Button" parent="MainContainer/VBoxContainer"]
 layout_mode = 2
 focus_previous = NodePath("../../Skill Tree")
+theme_override_font_sizes/font_size = 24
 text = "Quit Game"
 
 [node name="OptionsContainer" type="MarginContainer" parent="."]
@@ -83,6 +88,7 @@ layout_mode = 2
 [node name="OptionHeader" type="Label" parent="OptionsContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.662745, 0.384314, 0, 1)
+theme_override_font_sizes/font_size = 36
 text = "Options"
 horizontal_alignment = 1
 
@@ -95,17 +101,20 @@ layout_mode = 2
 [node name="MasterLbl" type="Label" parent="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.662745, 0.384314, 0, 1)
+theme_override_font_sizes/font_size = 24
 text = "Master
 "
 
 [node name="MusicLbl" type="Label" parent="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.662745, 0.384314, 0, 1)
+theme_override_font_sizes/font_size = 24
 text = "Music"
 
 [node name="SoundFXLbl" type="Label" parent="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.662745, 0.384314, 0, 1)
+theme_override_font_sizes/font_size = 24
 text = "Sound Fx"
 
 [node name="NightDarknessLbl" type="Label" parent="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -113,6 +122,7 @@ layout_mode = 2
 tooltip_text = "If checked the screen will be darker at night. If unchecked the day/night animation will not play."
 mouse_filter = 1
 theme_override_colors/font_color = Color(0.662745, 0.384314, 0, 1)
+theme_override_font_sizes/font_size = 24
 text = "Nighttime Darkness"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="OptionsContainer/VBoxContainer/HBoxContainer"]
@@ -141,6 +151,7 @@ layout_mode = 2
 [node name="BackOptions" type="Button" parent="OptionsContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
 text = "Back"
 
 [node name="SkillsTreeContainer" type="Control" parent="."]
@@ -180,6 +191,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="Button" type="Button" parent="SkillsTreeContainer/MarginContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Back"
 
 [connection signal="pressed" from="MainContainer/Resume" to="." method="resumePressed"]

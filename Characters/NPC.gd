@@ -5,6 +5,7 @@ enum AIState{ NONE, IDLE, WANDER, SEESPLAYER}
 @onready var state = AIState.IDLE
 @export var acceleration = 50
 @export var alwaysWantsPumpkins :bool = false
+@export var speachSound : AudioStream
 
 @onready var ani = $AnimatedSprite2D
 @onready var pumkinNotif = $AnimatedSprite2D2
@@ -13,12 +14,35 @@ enum AIState{ NONE, IDLE, WANDER, SEESPLAYER}
 
 @onready var wanderController = $WanderController
 @onready var playerDetection = $PlayerDetectionZones
+
 var isTouching: bool = false
 
 var skin: int = 1
 
-signal PurchasedPumpkin()
+var pumpkinActivities ={
+	0 : "make pumpkin soup",
+	1 : "make pumpkin pie",
+	2 : "carve a jack-o-lantern",
+	3 : "make pumpkin bread",
+	4 : "decoreate my house",
+	5 : "roast pumpkin seeds",
+	6 : "paint a pumpkin",
+	7 : "make a pumpkin spiced latte",
+	8 : "make pumpkin pasta",
+	9 : "make pumpkin risotto",
+	10 : "make pumpkin pancakes",
+	11 : "make pumpkin slime",
+	12 : "make pumpkin cinnamon rolls",
+	13 : "make pumpkin scones",
+	14 : "make pumpkin spiced cheesecake doughnuts",
+	15 : "make pumpkin butter",
+	16 : "make pumpkin cake",
+	17 : "make a scarecrow",
+	18 : "go pumpkin chuckin" 
+}
 
+signal PurchasedPumpkin()
+var pumpkinActivitiyIndex = 0
 @onready var wantsPumpkinToday: bool = false: 
 	set (value):
 		wantsPumpkinToday = value
@@ -26,6 +50,10 @@ signal PurchasedPumpkin()
 		if wantsPumpkinToday && pumkinNotif != null:
 			pumkinNotif.show()
 			pass
+		
+		if wantsPumpkinToday:
+			randomize()
+			pumpkinActivitiyIndex = randi_range(0, 18)
 	get:
 		return wantsPumpkinToday
 
@@ -173,3 +201,6 @@ func _unhandled_input(_event):
 			
 			coinSound.play()
 			PurchasedPumpkin.emit()
+	elif  Input.is_action_just_pressed("accept") && isTouching && wantsPumpkinToday && !hasPumpkin:
+		DialogueManager.startDialogue(global_position, ["Do you have any pumpkins today? I want to " + pumpkinActivities[pumpkinActivitiyIndex] + "."], speachSound)
+	

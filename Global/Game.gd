@@ -135,6 +135,13 @@ func AddCoffeeShop():
 	ActiveUpgrades[ADD_COFFEE_SHOP] = true
 	_AddCoffeeShop.emit()
 	pass
+	
+signal _AddGarland()
+const ADD_GARLAND = "add_garland"
+func AddGarland():
+	ActiveUpgrades[ADD_GARLAND] = true
+	_AddGarland.emit()
+	pass
 
 var GrowSpeed = 4
 var PumpkinDesireLevel = 4
@@ -335,7 +342,15 @@ var Upgrades = {
 		"Levels" : 1,
 		"Cost" : 250,
 		"Callable" : "AddCoffeeShop"
+	},
+	"add_garland" : {
+		"Name" : "Banners",
+		"Description" : "Decorate everyone's houses with festive banners",
+		"Levels" : 1,
+		"Cost" : 100,
+		"Callable" : "AddGarland"
 	}
+	
 	
 }
 

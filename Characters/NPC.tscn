@@ -1,8 +1,9 @@
-[gd_scene load_steps=107 format=3 uid="uid://bfbvbm8knujhl"]
+[gd_scene load_steps=108 format=3 uid="uid://bfbvbm8knujhl"]
 
 [ext_resource type="Shader" path="res://Characters/Outline.gdshader" id="1_fnqr5"]
 [ext_resource type="Script" path="res://Characters/NPC.gd" id="1_or1at"]
 [ext_resource type="PackedScene" uid="uid://bph6dk5nw8wwf" path="res://Characters/WanderController.tscn" id="2_nl8ud"]
+[ext_resource type="AudioStream" uid="uid://cpgwbrsh517bj" path="res://Assets/Sounds/talk.wav" id="2_q8pp6"]
 [ext_resource type="Texture2D" uid="uid://6u1pwjtsggw2" path="res://Assets/SmallBurg_village_pack_v3.2_free/premades/premade_01/character_premade_01_idle.png" id="2_ye80v"]
 [ext_resource type="PackedScene" uid="uid://bvy5an6tuavk7" path="res://Characters/PlayerDetectionZones.tscn" id="3_m704k"]
 [ext_resource type="Texture2D" uid="uid://cbeusyuk6ofbj" path="res://Assets/SmallBurg_village_pack_v3.2_free/premades/premade_01/character_premade_01_walk.png" id="3_mhsga"]
@@ -680,6 +681,7 @@ animations = [{
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_or1at")
+speachSound = ExtResource("2_q8pp6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_aa0qr")
