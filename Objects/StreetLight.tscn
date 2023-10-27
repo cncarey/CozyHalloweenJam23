@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbvyonrnukpjm"]
+
+[ext_resource type="Script" path="res://Objects/StreetLight.gd" id="1_eos06"]
+[ext_resource type="Texture2D" uid="uid://dpeb8boxaardm" path="res://Assets/SmallBurg_village_pack_v3.2_free/assets/tileset/SmallBurg_outside_assets.png" id="1_l8o7w"]
+[ext_resource type="Texture2D" uid="uid://cmiqn2sutwkmx" path="res://Assets/moon_light.png" id="2_l2p7b"]
+[ext_resource type="Texture2D" uid="uid://b7j22sxy4sbyw" path="res://Assets/garland.png" id="4_wb4m8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqxrt"]
+atlas = ExtResource("1_l8o7w")
+region = Rect2(304.106, 370.982, 16.6083, 26.3704)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wocwg"]
+size = Vector2(4, 3)
+
+[node name="StreetLight" type="StaticBody2D"]
+y_sort_enabled = true
+position = Vector2(0, 16.796)
+scale = Vector2(1.5, 2)
+collision_layer = 2
+script = ExtResource("1_eos06")
+
+[node name="garland" type="Sprite2D" parent="."]
+visible = false
+y_sort_enabled = true
+position = Vector2(-1.29822, -10.0257)
+texture = ExtResource("4_wb4m8")
+offset = Vector2(0, -12)
+hframes = 6
+vframes = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -12)
+texture = SubResource("AtlasTexture_fqxrt")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.029, -8.245)
+shape = SubResource("RectangleShape2D_wocwg")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-0.235992, -16.9531)
+color = Color(1, 0.94902, 0.054902, 1)
+energy = 0.15
+texture = ExtResource("2_l2p7b")
+texture_scale = 0.05

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cxgatpplm4rgv"]
+[gd_scene load_steps=18 format=3 uid="uid://cxgatpplm4rgv"]
 
 [ext_resource type="Script" path="res://HUD/skill_tree.gd" id="1_5mkcn"]
 [ext_resource type="PackedScene" uid="uid://defx6wlu4icmm" path="res://HUD/SkillButton.tscn" id="1_rkbsh"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://emq21vuru5vd" path="res://Assets/SkillTreeIcons/004-garland.png" id="9_7fpo8"]
 [ext_resource type="Texture2D" uid="uid://behkefquydsh8" path="res://Assets/SkillTreeIcons/035-sesame.png" id="9_8hpvq"]
 [ext_resource type="Texture2D" uid="uid://bkws7l1x62cqx" path="res://Assets/SkillTreeIcons/036-scarecrow.png" id="10_7ov51"]
+[ext_resource type="Texture2D" uid="uid://cgy50axt7eeim" path="res://Assets/SkillTreeIcons/pile.png" id="11_mmu06"]
 
 [node name="SkillTree" type="Control"]
 layout_direction = 1
@@ -77,10 +78,10 @@ skillName = "add_black_cats"
 
 [node name="SkillButton7" parent="SkillButton/SkillButton2/SkillButton5" instance=ExtResource("1_rkbsh")]
 layout_mode = 0
-offset_left = 4.0
-offset_top = -125.0
-offset_right = 52.0
-offset_bottom = -77.0
+offset_left = -2.0
+offset_top = -89.0
+offset_right = 46.0
+offset_bottom = -41.0
 tooltip_text = "Add Costumes
 1 - Neighbors
 2  - You "
@@ -103,10 +104,10 @@ skillName = "add_cemerery"
 
 [node name="SkillButton7" parent="SkillButton/SkillButton2/SkillButton6" instance=ExtResource("1_rkbsh")]
 layout_mode = 0
-offset_left = 2.0
-offset_top = -126.0
-offset_right = 50.0
-offset_bottom = -78.0
+offset_left = -2.0
+offset_top = -90.0
+offset_right = 46.0
+offset_bottom = -42.0
 tooltip_text = "Add Costumes
 1 - Neighbors
 2  - You "
@@ -129,15 +130,28 @@ skillName = "add_garland"
 
 [node name="SkillButton9" parent="SkillButton/SkillButton2/SkillButton8" instance=ExtResource("1_rkbsh")]
 layout_mode = 0
-offset_top = -131.0
+offset_top = -90.0
 offset_right = 48.0
-offset_bottom = -83.0
+offset_bottom = -42.0
 tooltip_text = "Add Costumes
 1 - Neighbors
 2  - You "
 disabled = true
 texture_normal = ExtResource("8_lknht")
 skillName = "add_pumpkin_patch"
+
+[node name="SkillButton10" parent="SkillButton/SkillButton2/SkillButton8" instance=ExtResource("1_rkbsh")]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -178.0
+offset_right = 46.0
+offset_bottom = -130.0
+tooltip_text = "Add Costumes
+1 - Neighbors
+2  - You "
+disabled = true
+texture_normal = ExtResource("11_mmu06")
+skillName = "add_leaf_pile"
 
 [node name="SkillButton5" parent="SkillButton" instance=ExtResource("1_rkbsh")]
 layout_mode = 0
@@ -281,6 +295,8 @@ text = "Make It Festive"
 [connection signal="onHoverStop" from="SkillButton/SkillButton2/SkillButton8" to="." method="clearInfo"]
 [connection signal="onHoverStart" from="SkillButton/SkillButton2/SkillButton8/SkillButton9" to="." method="setInfo"]
 [connection signal="onHoverStop" from="SkillButton/SkillButton2/SkillButton8/SkillButton9" to="." method="clearInfo"]
+[connection signal="onHoverStart" from="SkillButton/SkillButton2/SkillButton8/SkillButton10" to="." method="setInfo"]
+[connection signal="onHoverStop" from="SkillButton/SkillButton2/SkillButton8/SkillButton10" to="." method="clearInfo"]
 [connection signal="onHoverStart" from="SkillButton/SkillButton5" to="." method="setInfo"]
 [connection signal="onHoverStop" from="SkillButton/SkillButton5" to="." method="clearInfo"]
 [connection signal="onHoverStart" from="SkillButton/SkillButton5/SkillButton3" to="." method="setInfo"]

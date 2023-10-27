@@ -3,6 +3,8 @@ extends Area2D
 var isTouching: bool = false
 var hasSeed: bool = false
 
+@export var speachSound : AudioStream
+
 var pumpkinPlant = preload("res://Objects/pumpkinPlant.tscn")
 @onready var point = $Marker2D
 
@@ -29,6 +31,8 @@ func _unhandled_input(_event):
 			plant.position = point.position
 			add_child(plant)
 			plant.connect("Harvested", Harvested)
+		else:
+			DialogueManager.startDialogue(global_position, ["I need to go to the seed shop soon."], speachSound)
 		#TODO connect pumpkin bing harvested to the harvested method
 
 func Harvested():

@@ -8,12 +8,13 @@ class_name SkillNode
 @onready var costMargin : MarginContainer = $MarginContainer2
 @onready var cost: Label = $MarginContainer2/HBoxContainer/cost
 @onready var line : Line2D = $Line2D
-@onready var levelUpSound : AudioStreamPlayer = $AudioStreamPlayer
+@onready var levelUpSound : AudioStreamPlayer = $SuccessSound
+@onready var failSound: AudioStreamPlayer = $FailSound
 
 var maxLevel : int = 1
 var skillData
 @export var skillName: String = ""
-
+@onready var tween : Tween
 
 var level : int = 0:
 	set(value):
@@ -72,7 +73,15 @@ func increaseLevel():
 			Game.call(skillData["Callable"])
 			onPress()
 		else:
+			
 			self.button_pressed = false
+			if tween:
+				tween.kill()
+				
+			tween = get_tree().create_tween()
+			tween.tween_property(cost, "modulate", Color.html("a96200"), .5)
+			tween.tween_property(cost, "modulate", Color.html("ffffff"), .5)
+			failSound.play()
 	
 func onPress():
 	panel.show_behind_parent = true

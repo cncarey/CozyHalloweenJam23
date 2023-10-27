@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dme635lqpjprv"]
+[gd_scene load_steps=6 format=3 uid="uid://dme635lqpjprv"]
 
 [ext_resource type="Script" path="res://Objects/DirtPatch.gd" id="1_om3do"]
 [ext_resource type="AudioStream" uid="uid://0wfehmgi2s2k" path="res://Assets/Sounds/seeding.ogg" id="2_34mep"]
+[ext_resource type="AudioStream" uid="uid://cpgwbrsh517bj" path="res://Assets/Sounds/talk.wav" id="2_wlhe2"]
 [ext_resource type="AudioStream" uid="uid://bb6n0jslmkjco" path="res://Assets/Sounds/Haresting.ogg" id="3_rqqfb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wki41"]
@@ -10,6 +11,7 @@ size = Vector2(30, 24)
 [node name="DirtPatch" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_om3do")
+speachSound = ExtResource("2_wlhe2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wki41")

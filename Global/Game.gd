@@ -143,6 +143,13 @@ func AddGarland():
 	_AddGarland.emit()
 	pass
 
+signal _AddLeafPile()
+const ADD_LEAF_PILE ="add_leaf_pile"
+func AddLeafPile():
+	ActiveUpgrades[ADD_LEAF_PILE] = true
+	_AddLeafPile.emit()
+	pass
+
 var GrowSpeed = 4
 var PumpkinDesireLevel = 4
 var MinShopSeeds = 10
@@ -350,7 +357,14 @@ var Upgrades = {
 		"Cost" : 100,
 		"Callable" : "AddGarland"
 	}
-	
+	,
+	"add_leaf_pile" : {
+		"Name" : "Jump In",
+		"Description" : "Someone has raked up piles of leaves around town. Jump on in.",
+		"Levels" : 1,
+		"Cost" : 100,
+		"Callable" : "AddLeafPile"
+	}
 	
 }
 

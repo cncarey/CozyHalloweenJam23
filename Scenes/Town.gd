@@ -6,6 +6,7 @@ extends Node2D
 
 @onready var catPoints : Node2D =  $Cats
 @onready var VendingPoints: Node2D = $VendingMachinePoints
+@onready var LeafPilePoints: Node2D = $LeafPiles
 @onready var DotDPoints: Marker2D = $DotDBand
 @onready var CoffeeShopPoint: Marker2D = $CoffeeShopPoint
 
@@ -13,6 +14,7 @@ extends Node2D
 @onready var vending = preload("res://Objects/Shops/VendingMachine.tscn")
 @onready var DotDBand = preload("res://Characters/DotDDancers.tscn")
 @onready var coffeeShop = preload("res://Objects/Shops/CoffeeShop.tscn")
+@onready var LeafPile = preload("res://Objects/LeafPile.tscn")
 
 @onready var ui : CanvasLayer = $UI
 
@@ -27,6 +29,7 @@ func _ready():
 	Game.connect("_AddPumpkinPatch", _AddPumpkinPatch)
 	Game.connect("_AddCoffeeShop", _AddCoffeeShop)
 	Game.connect("_AddGarland", _AddGarland)
+	Game.connect("_AddLeafPile", _AddLeafPile)
 	pass
 
 	
@@ -62,6 +65,12 @@ func _AddBlackCats():
 		_cat.position = p.position
 		add_child(_cat)
 	pass
+	
+func _AddLeafPile():
+	for p in LeafPilePoints.get_children():
+		var _leafPile = LeafPile.instantiate()
+		_leafPile.position = p.position
+		add_child(_leafPile)
 	
 func _DayOfTheDead():
 	var _dotd = DotDBand.instantiate()

@@ -201,6 +201,8 @@ func _unhandled_input(_event):
 			
 			coinSound.play()
 			PurchasedPumpkin.emit()
+	elif Input.is_action_just_pressed("interact") && isTouching && Game.CurrentPumpkins <= 0 && wantsPumpkinToday && !hasPumpkin:
+			DialogueManager.startDialogue(global_position, ["Come see me when you get more pumpkins. I want to " + pumpkinActivities[pumpkinActivitiyIndex] + "."], speachSound)
 	elif  Input.is_action_just_pressed("accept") && isTouching && wantsPumpkinToday && !hasPumpkin:
 		DialogueManager.startDialogue(global_position, ["Do you have any pumpkins today? I want to " + pumpkinActivities[pumpkinActivitiyIndex] + "."], speachSound)
 	

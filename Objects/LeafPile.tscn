@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm3xwiw0xqq6s"]
+
+[ext_resource type="Script" path="res://Objects/LeafPile.gd" id="1_mia3i"]
+[ext_resource type="Texture2D" uid="uid://cjogww37rj7ot" path="res://Assets/Autumn_Leaf_Pile.png" id="2_b47ow"]
+[ext_resource type="AudioStream" uid="uid://c2krvwcm7wbbw" path="res://Assets/Sounds/Swipe.wav" id="3_c4rsr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x2b4x"]
+radius = 4.0
+height = 24.0
+
+[node name="LeafPile" type="Area2D"]
+y_sort_enabled = true
+script = ExtResource("1_mia3i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_x2b4x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(0.25, 0.225)
+texture = ExtResource("2_b47ow")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_c4rsr")
+volume_db = -7.0
+bus = &"SoundFx"
+
+[connection signal="body_entered" from="." to="." method="pileEntered"]

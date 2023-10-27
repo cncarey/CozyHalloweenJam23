@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://defx6wlu4icmm"]
+[gd_scene load_steps=7 format=3 uid="uid://defx6wlu4icmm"]
 
 [ext_resource type="Texture2D" uid="uid://bl86164vlygjs" path="res://icon.svg" id="1_mbqud"]
 [ext_resource type="Script" path="res://HUD/SkillButton.gd" id="2_d1f7m"]
 [ext_resource type="AudioStream" uid="uid://bg3fejxjxlvb8" path="res://Assets/Sounds/levelUp.ogg" id="3_lxehh"]
 [ext_resource type="Texture2D" uid="uid://pqfcgnysbnwb" path="res://Assets/Sprite sheet for Basic Pack.png" id="3_t6wp1"]
+[ext_resource type="AudioStream" uid="uid://b7ap7ejx86swo" path="res://Assets/Sounds/Hurt.wav" id="5_7g8f0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kea5n"]
 atlas = ExtResource("3_t6wp1")
@@ -71,9 +72,14 @@ top_level = true
 z_index = -1
 default_color = Color(0.219608, 0.219608, 0.219608, 1)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SuccessSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_lxehh")
 volume_db = -10.0
+bus = &"SoundFx"
+
+[node name="FailSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_7g8f0")
+volume_db = -7.0
 bus = &"SoundFx"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
