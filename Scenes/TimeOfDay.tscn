@@ -97,6 +97,7 @@ script = ExtResource("1_4s7hv")
 color = Color(0.513726, 0.427451, 1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
 libraries = {
 "": SubResource("AnimationLibrary_wnlil")
 }

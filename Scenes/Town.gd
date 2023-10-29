@@ -1,8 +1,11 @@
 extends Node2D
 
+@export var speachSound : AudioStream
+
 @onready var player : CharacterBody2D = $player
 @onready var plants : Node2D = $plants
 @onready var tileMap : TileMap = $TileMap
+@onready var timeOfDay: Node2D = $TimeOfDay
 
 @onready var catPoints : Node2D =  $Cats
 @onready var VendingPoints: Node2D = $VendingMachinePoints
@@ -16,7 +19,10 @@ extends Node2D
 @onready var coffeeShop = preload("res://Objects/Shops/CoffeeShop.tscn")
 @onready var LeafPile = preload("res://Objects/LeafPile.tscn")
 
+@onready var letter = preload("res://Scenes/Letter.tscn")
+
 @onready var ui : CanvasLayer = $UI
+@onready var tween : Tween
 
 func _ready():
 	Game.connect("_ShowPumpkins",_ShowPumpkins)
@@ -30,6 +36,39 @@ func _ready():
 	Game.connect("_AddCoffeeShop", _AddCoffeeShop)
 	Game.connect("_AddGarland", _AddGarland)
 	Game.connect("_AddLeafPile", _AddLeafPile)
+	call_deferred("openingScence")
+	
+func openingScence():
+	Game.CanMove = false
+	tween = create_tween()
+	tween.tween_callback(player.OpeningScene1)
+	tween.tween_property(player, "position", Vector2(80, 220), 2)
+	tween.tween_callback(player.OpeningScene2)
+	tween.tween_property(player, "position", Vector2(95, 220), .5)
+	await tween.tween_callback(player.OpeningScene3).finished
+	
+	
+	DialogueManager.startDialogue(Vector2(175, 230), ["It's spooky season again! ","I can't wait to carve pumpkins","and get pumpkin spice lattes and ..."], speachSound)
+	DialogueManager.finishedDisplaying.connect(openLetter)
+
+func openLetter():
+	if DialogueManager.finishedDisplaying.is_connected(openLetter):
+		DialogueManager.finishedDisplaying.disconnect(openLetter)
+	Game.CanMove = false
+	var _letter = letter.instantiate()
+	add_child(_letter)
+	_letter.connect("closedLetter", solveProblem)
+	pass	
+
+func solveProblem():
+	Game.CanMove = false
+	DialogueManager.startDialogue(Vector2(175, 230), ["Maybe if I sell enough pumpkins I can help decorate the town", "and get it ready for the spooky season."], speachSound)
+	DialogueManager.finishedDisplaying.connect(startDay)
+	pass
+
+func startDay():	
+	Game.CanMove = true
+	timeOfDay.playTimeOfDay()
 	pass
 
 	

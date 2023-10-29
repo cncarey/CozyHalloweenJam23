@@ -8,7 +8,7 @@ var ChangeState = false
 @onready var animation: AnimationPlayer = $AnimationPlayer
 
 func _ready():
-	playTimeOfDay()
+	pass
 
 func setTimeOfDay():
 	match Game.CurrentTimeOfDay:

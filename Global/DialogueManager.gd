@@ -35,6 +35,7 @@ func showTextBox():
 	textBox.displayText(diaglogLines[currentLineIndex], sfx)
 	canAdvanceNextLine = false
 	
+signal finishedDisplaying()
 	
 func textBoxOnFinishDisaplay():
 	canAdvanceNextLine = true
@@ -48,6 +49,7 @@ func _unhandled_input(event):
 			isActive = false
 			currentLineIndex = 0
 			Game.CanMove = true
+			finishedDisplaying.emit()
 			return
 		else:
 			showTextBox()

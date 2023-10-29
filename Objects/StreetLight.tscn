@@ -15,7 +15,7 @@ size = Vector2(4, 3)
 [node name="StreetLight" type="StaticBody2D"]
 y_sort_enabled = true
 position = Vector2(0, 16.796)
-scale = Vector2(1.5, 2)
+scale = Vector2(1.125, 1.5)
 collision_layer = 2
 script = ExtResource("1_eos06")
 

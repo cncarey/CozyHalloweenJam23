@@ -65,6 +65,20 @@ func _physics_process(_delta):
 	velocity = direction.normalized() * speed
 	move_and_slide()
 	
+func OpeningScene1():
+	grassSteps.pitch_scale = randf_range(0.8, 1.2)
+	grassSteps.play()
+	aniTree.set("parameters/Idle/blend_position", Vector2.DOWN)
+	aniTree.set("parameters/Run/blend_position", Vector2.DOWN)
+	aniState.travel("Run")
+	
+	
+func OpeningScene2():
+	aniTree.set("parameters/Idle/blend_position", Vector2.RIGHT)
+	aniTree.set("parameters/Run/blend_position", Vector2.RIGHT)	
+
+func OpeningScene3():
+	aniState.travel("Idle")
 	
 func changeState(newStateName: String):
 	if state != null:

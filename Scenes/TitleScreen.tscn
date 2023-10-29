@@ -46,6 +46,6 @@ theme_override_constants/margin_bottom = 15
 layout_mode = 2
 theme_override_colors/font_color = Color(0.960784, 0.560784, 0.145098, 1)
 theme_override_font_sizes/font_size = 24
-text = "Version 5 - final"
+text = "Post Jam-7.0"
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="startGame"]
