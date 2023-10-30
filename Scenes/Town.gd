@@ -18,10 +18,12 @@ extends Node2D
 @onready var DotDBand = preload("res://Characters/DotDDancers.tscn")
 @onready var coffeeShop = preload("res://Objects/Shops/CoffeeShop.tscn")
 @onready var LeafPile = preload("res://Objects/LeafPile.tscn")
+@onready var Party = preload("res://Objects/Shops/HalloweenParty.tscn")
 
 @onready var letter = preload("res://Scenes/Letter.tscn")
 
 @onready var ui : CanvasLayer = $UI
+@onready var fountain: StaticBody2D = $Fountain
 @onready var tween : Tween
 
 func _ready():
@@ -36,6 +38,7 @@ func _ready():
 	Game.connect("_AddCoffeeShop", _AddCoffeeShop)
 	Game.connect("_AddGarland", _AddGarland)
 	Game.connect("_AddLeafPile", _AddLeafPile)
+	Game.connect("_AddHalloweenParty", _AddHalloweenParty)
 	call_deferred("openingScence")
 	
 func openingScence():
@@ -71,7 +74,6 @@ func startDay():
 	timeOfDay.playTimeOfDay()
 	pass
 
-	
 func _ShowPumpkins():
 	tileMap.set_layer_enabled(3, true)
 	pass
@@ -123,6 +125,11 @@ func _AddCoffeeShop():
 	_coffee.global_position = CoffeeShopPoint.global_position
 	add_child(_coffee)
 	pass
+	
+func _AddHalloweenParty():
+	var _party = Party.instantiate()
+	_party.global_position = fountain.global_position
+	add_child(_party)
 
 func _AddVendingMachines():
 	var indx = Game.ActiveUpgrades[Game.ADD_VENDING_MACHINES] - 1

@@ -6,6 +6,7 @@ enum AIState{ NONE, IDLE, WANDER, SEESPLAYER}
 @export var acceleration = 50
 @export var alwaysWantsPumpkins :bool = false
 @export var speachSound : AudioStream
+@export var isIdleOnly: bool = false
 
 @onready var ani = $AnimatedSprite2D
 @onready var pumkinNotif = $AnimatedSprite2D2
@@ -85,6 +86,8 @@ func setTimeOfDay(tod):
 			
 			pass
 		Game.TimeOfDay.Evening:
+			if isIdleOnly:
+				resetDay()
 			#TODO If the trick-or- treat skill is unlocked
 			# set the use costume flag to true
 			pass
@@ -122,7 +125,7 @@ func _physics_process(delta):
 			
 			seekPlayer()
 			
-			if wanderController.getTimeLeft() == 0:
+			if !isIdleOnly && wanderController.getTimeLeft() == 0:
 				setRandomState()
 			pass
 		AIState.WANDER:

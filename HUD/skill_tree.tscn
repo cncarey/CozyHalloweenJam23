@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cxgatpplm4rgv"]
+[gd_scene load_steps=19 format=3 uid="uid://cxgatpplm4rgv"]
 
 [ext_resource type="Script" path="res://HUD/skill_tree.gd" id="1_5mkcn"]
 [ext_resource type="PackedScene" uid="uid://defx6wlu4icmm" path="res://HUD/SkillButton.tscn" id="1_rkbsh"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bilwxqs8vmenw" path="res://Assets/SkillTreeIcons/033-poison.png" id="6_wxib8"]
 [ext_resource type="Texture2D" uid="uid://ctlpbpoy7ah4l" path="res://Assets/SkillTreeIcons/030-cookies.png" id="6_yc1a3"]
 [ext_resource type="Texture2D" uid="uid://xbdsrvonoiew" path="res://Assets/SkillTreeIcons/023-eye.png" id="7_8fiv5"]
+[ext_resource type="Texture2D" uid="uid://4ig3bngqhy0n" path="res://Assets/SkillTreeIcons/003-halloween-party.png" id="7_i5ecu"]
 [ext_resource type="Texture2D" uid="uid://hm76yuj0xfwv" path="res://Assets/SkillTreeIcons/041-vending-machine.png" id="8_6erp4"]
 [ext_resource type="Texture2D" uid="uid://bufruaofpeisw" path="res://Assets/SkillTreeIcons/001-halloween.png" id="8_lknht"]
 [ext_resource type="Texture2D" uid="uid://emq21vuru5vd" path="res://Assets/SkillTreeIcons/004-garland.png" id="9_7fpo8"]
@@ -88,6 +89,19 @@ tooltip_text = "Add Costumes
 disabled = true
 texture_normal = ExtResource("6_wxib8")
 skillName = "add_coffee_shop"
+
+[node name="SkillButton8" parent="SkillButton/SkillButton2/SkillButton5/SkillButton7" instance=ExtResource("1_rkbsh")]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -88.0
+offset_right = 50.0
+offset_bottom = -40.0
+tooltip_text = "Add Costumes
+1 - Neighbors
+2  - You "
+disabled = true
+texture_normal = ExtResource("7_i5ecu")
+skillName = "add_halloween_party"
 
 [node name="SkillButton6" parent="SkillButton/SkillButton2" instance=ExtResource("1_rkbsh")]
 layout_mode = 0
@@ -287,6 +301,8 @@ text = "Make It Festive"
 [connection signal="onHoverStop" from="SkillButton/SkillButton2/SkillButton5" to="." method="clearInfo"]
 [connection signal="onHoverStart" from="SkillButton/SkillButton2/SkillButton5/SkillButton7" to="." method="setInfo"]
 [connection signal="onHoverStop" from="SkillButton/SkillButton2/SkillButton5/SkillButton7" to="." method="clearInfo"]
+[connection signal="onHoverStart" from="SkillButton/SkillButton2/SkillButton5/SkillButton7/SkillButton8" to="." method="setInfo"]
+[connection signal="onHoverStop" from="SkillButton/SkillButton2/SkillButton5/SkillButton7/SkillButton8" to="." method="clearInfo"]
 [connection signal="onHoverStart" from="SkillButton/SkillButton2/SkillButton6" to="." method="setInfo"]
 [connection signal="onHoverStop" from="SkillButton/SkillButton2/SkillButton6" to="." method="clearInfo"]
 [connection signal="onHoverStart" from="SkillButton/SkillButton2/SkillButton6/SkillButton7" to="." method="setInfo"]

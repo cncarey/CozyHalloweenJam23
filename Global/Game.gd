@@ -71,6 +71,18 @@ func AddVendingMachines():
 	_AddVendingMachines.emit()
 	pass
 
+signal _AddHalloweenParty()
+const ADD_HALLOWEEN_PARTY = "add_halloween_party"
+func AddHalloweenParty():
+	if ActiveUpgrades.has(ADD_HALLOWEEN_PARTY):
+		var curPartiers = ActiveUpgrades[ADD_HALLOWEEN_PARTY] + 1
+		ActiveUpgrades[ADD_HALLOWEEN_PARTY] =  min(curPartiers, 3)
+	else:
+		ActiveUpgrades[ADD_HALLOWEEN_PARTY] = 1
+		
+	_AddHalloweenParty.emit()
+	pass
+	
 #decorations
 signal _ShowYourPumpkins()
 const ADD_JACK_O_LANTERNS = "add_jack_o_lanterns"
@@ -356,15 +368,22 @@ var Upgrades = {
 		"Levels" : 1,
 		"Cost" : 100,
 		"Callable" : "AddGarland"
-	}
-	,
+	},
 	"add_leaf_pile" : {
 		"Name" : "Jump In",
 		"Description" : "Someone has raked up piles of leaves around town. Jump on in.",
 		"Levels" : 1,
 		"Cost" : 100,
 		"Callable" : "AddLeafPile"
+	},
+	"add_halloween_party" : {
+		"Name" : "Party!",
+		"Description" : "A party happens every night in the town square. More people get invited to the party.",
+		"Levels" : 3,
+		"Cost" : 150,
+		"Callable" : "AddHalloweenParty"
 	}
+	
 	
 }
 

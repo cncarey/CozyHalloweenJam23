@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://betooaahtn4ih"]
+
+[ext_resource type="Script" path="res://Objects/Shops/HalloweenParty.gd" id="1_28bx1"]
+[ext_resource type="Texture2D" uid="uid://y7owbbyulrw1" path="res://Assets/party.png" id="2_0snv6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1bot"]
+atlas = ExtResource("2_0snv6")
+region = Rect2(241.311, 240, 42.6887, 95.6927)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kpges"]
+radius = 4.27119
+
+[node name="HalloweenParty" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_28bx1")
+
+[node name="PartierPoints" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="PartierPoints"]
+position = Vector2(-47.0309, 42.1656)
+
+[node name="Marker2D2" type="Marker2D" parent="PartierPoints"]
+position = Vector2(-47.0309, -32.0006)
+
+[node name="Marker2D3" type="Marker2D" parent="PartierPoints"]
+position = Vector2(53.8801, -48.9314)
+
+[node name="Marker2D4" type="Marker2D" parent="PartierPoints"]
+position = Vector2(52.3069, 37.5209)
+
+[node name="Marker2D5" type="Marker2D" parent="PartierPoints"]
+position = Vector2(-104.341, -9.52599)
+
+[node name="Marker2D6" type="Marker2D" parent="PartierPoints"]
+position = Vector2(111.565, -14.0957)
+
+[node name="Marker2D7" type="Marker2D" parent="PartierPoints"]
+position = Vector2(2.48819, 94.082)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-84.8632, -45.1108)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_n1bot")
+offset = Vector2(0, -43)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(59, -71.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_n1bot")
+offset = Vector2(0, -43)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-120, 54.5)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_n1bot")
+offset = Vector2(0, -43)
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(75.3286, 9.68234)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_n1bot")
+offset = Vector2(0, -43)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-119, 52)
+shape = SubResource("CircleShape2D_kpges")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-84.8632, -45.1108)
+shape = SubResource("CircleShape2D_kpges")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(61.2103, -74.3055)
+shape = SubResource("CircleShape2D_kpges")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(77, 8)
+shape = SubResource("CircleShape2D_kpges")
+
+[node name="TempObjects" type="Node2D" parent="."]
