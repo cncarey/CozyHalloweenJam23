@@ -84,7 +84,6 @@ func _unhandled_input(_event):
 		var _mp  = min(Game.CurrentPumpkins, maxPumpkinLoad())
 		var _howMany = howMany.instantiate()
 		_howMany.MaxSelected = _mp
-		#_howMany.global_position = self.global_position
 		popupOpened = true
 		OpenPopUp.emit(_howMany)
 		_howMany.connect("loadPumpkins", loadPumpkins)

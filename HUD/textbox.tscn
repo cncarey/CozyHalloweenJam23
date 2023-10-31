@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://4rd5xo3njut3"]
+[gd_scene load_steps=7 format=3 uid="uid://4rd5xo3njut3"]
 
 [ext_resource type="Texture2D" uid="uid://cwl4up2eotxxp" path="res://Assets/BiomeClearBonus.png" id="1_2mcvj"]
 [ext_resource type="Script" path="res://HUD/textbox.gd" id="1_djyyr"]
+[ext_resource type="Texture2D" uid="uid://bupkf766f7plx" path="res://Assets/tilemap_white_packed.png" id="3_nc3t7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eq88"]
+atlas = ExtResource("3_nc3t7")
+region = Rect2(337.921, 194.168, 11.1736, 10.7969)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lip5u"]
+load_path = "res://.godot/imported/tilemap_white_packed.png-53641939dabcd364935c2e6e82247279.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gb01i"]
+atlas = SubResource("CompressedTexture2D_lip5u")
+region = Rect2(145.759, 17.9079, 12.2407, 11.8641)
 
 [node name="textbox" type="MarginContainer"]
 script = ExtResource("1_djyyr")
@@ -15,11 +27,33 @@ patch_margin_top = 4
 patch_margin_right = 3
 patch_margin_bottom = 6
 
+[node name="Control" type="Control" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Keyboard" type="Sprite2D" parent="NinePatchRect/Control"]
+visible = false
+position = Vector2(-3, 4)
+texture = SubResource("AtlasTexture_8eq88")
+
+[node name="Xbox" type="Sprite2D" parent="NinePatchRect/Control"]
+visible = false
+position = Vector2(-4, 4)
+texture = SubResource("AtlasTexture_gb01i")
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 6
+theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 6
 
 [node name="Label" type="Label" parent="MarginContainer"]

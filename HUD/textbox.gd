@@ -4,6 +4,9 @@ extends MarginContainer
 @onready var timer : Timer = $LetterDisplayTimer
 @onready var sfxPlayer: AudioStreamPlayer = $AudioStreamPlayer
 
+@onready var keyboardNext : Sprite2D = $NinePatchRect/Control/Keyboard
+@onready var xboxNext: Sprite2D = $NinePatchRect/Control/Xbox
+
 var MAX_WIDTH = 256
 
 var text = ""
@@ -49,6 +52,13 @@ func displayLetter():
 	
 	if letterIndex >= text.length():
 		finishedDisplaying.emit()
+		match Game.ControlSchema:
+			0, 1:
+				keyboardNext.visible = true
+				pass
+			2:
+				xboxNext.visible = true
+				pass
 		return
 	
 	match text[letterIndex]:

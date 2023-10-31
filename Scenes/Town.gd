@@ -22,6 +22,10 @@ extends Node2D
 
 @onready var letter = preload("res://Scenes/Letter.tscn")
 
+@onready var WASDTutorial : Node2D = $WASD
+@onready var ArrowTutorial : Node2D = $Arrows
+@onready var XboxTutorial : Node2D = $Xbox
+
 @onready var ui : CanvasLayer = $UI
 @onready var fountain: StaticBody2D = $Fountain
 @onready var tween : Tween
@@ -39,7 +43,27 @@ func _ready():
 	Game.connect("_AddGarland", _AddGarland)
 	Game.connect("_AddLeafPile", _AddLeafPile)
 	Game.connect("_AddHalloweenParty", _AddHalloweenParty)
+	Game.connect("controlSchemaChanged", setTutorial)
 	call_deferred("openingScence")
+	
+func setTutorial(index: int):
+	match index:
+		0:
+			WASDTutorial.show()
+			ArrowTutorial.hide()
+			XboxTutorial.hide()
+			pass
+		1:
+			WASDTutorial.hide()
+			ArrowTutorial.show()
+			XboxTutorial.hide()
+			pass
+		2:
+			WASDTutorial.hide()
+			ArrowTutorial.hide()
+			XboxTutorial.show()
+			pass
+	pass	
 	
 func openingScence():
 	Game.CanMove = false
@@ -70,6 +94,8 @@ func solveProblem():
 	pass
 
 func startDay():	
+	if DialogueManager.finishedDisplaying.is_connected(startDay):
+		DialogueManager.finishedDisplaying.disconnect(startDay)
 	Game.CanMove = true
 	timeOfDay.playTimeOfDay()
 	pass
@@ -142,5 +168,8 @@ func _AddVendingMachines():
 
 
 func _on_vending_machine_open_pop_up(popup):
+	var tempPosition = popup.position
+	
+	popup.position = Vector2(tempPosition.x, tempPosition.y - 125)
 	ui.add_child(popup)
 	pass # Replace with function body.

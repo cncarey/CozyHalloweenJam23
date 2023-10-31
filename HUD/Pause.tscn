@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7esqv2uuvw5m"]
+[gd_scene load_steps=7 format=3 uid="uid://c7esqv2uuvw5m"]
 
 [ext_resource type="Script" path="res://HUD/Pause.gd" id="1_kv4mq"]
 [ext_resource type="PackedScene" uid="uid://cxgatpplm4rgv" path="res://HUD/skill_tree.tscn" id="2_kd1rt"]
+[ext_resource type="Texture2D" uid="uid://bupkf766f7plx" path="res://Assets/tilemap_white_packed.png" id="2_uteba"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn3tq"]
+atlas = ExtResource("2_uteba")
+region = Rect2(481.018, 65.026, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u12t6"]
+atlas = ExtResource("2_uteba")
+region = Rect2(288.724, 32.7531, 13.2609, 13.3004)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emscv"]
+atlas = ExtResource("2_uteba")
+region = Rect2(130.124, 98.0548, 11.8519, 13.6955)
 
 [node name="Pause" type="CanvasLayer"]
 process_mode = 3
@@ -17,6 +30,7 @@ grow_vertical = 2
 color = Color(0.788235, 0.788235, 0.788235, 1)
 
 [node name="MainContainer" type="VBoxContainer" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -125,10 +139,16 @@ theme_override_colors/font_color = Color(0.662745, 0.384314, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Nighttime Darkness"
 
+[node name="ControlLabel" type="Label" parent="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.662745, 0.384314, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Control Schema"
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="OptionsContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 16
+theme_override_constants/separation = 10
 
 [node name="MasterSlider" type="HSlider" parent="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -147,6 +167,21 @@ max_value = 20.0
 
 [node name="DayNght" type="CheckBox" parent="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+item_count = 3
+selected = 0
+popup/item_0/text = "Keyboard - Arrows"
+popup/item_0/icon = SubResource("AtlasTexture_wn3tq")
+popup/item_0/id = 0
+popup/item_1/text = "Keyboard - WASD"
+popup/item_1/icon = SubResource("AtlasTexture_u12t6")
+popup/item_1/id = 1
+popup/item_2/text = "Controller - Xbox"
+popup/item_2/icon = SubResource("AtlasTexture_emscv")
+popup/item_2/id = 2
 
 [node name="BackOptions" type="Button" parent="OptionsContainer/VBoxContainer"]
 layout_mode = 2
@@ -202,5 +237,6 @@ text = "Back"
 [connection signal="value_changed" from="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/MusicSlider" to="." method="musicVolumeChanged"]
 [connection signal="value_changed" from="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SFxSlider" to="." method="sfxVolumeChanged"]
 [connection signal="toggled" from="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/DayNght" to="." method="setDayNightAnimation"]
+[connection signal="item_selected" from="OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/OptionButton" to="." method="ControlSchemaSelected"]
 [connection signal="pressed" from="OptionsContainer/VBoxContainer/BackOptions" to="." method="hideOptions"]
 [connection signal="pressed" from="SkillsTreeContainer/MarginContainer/Button" to="." method="hideSkillsTree"]

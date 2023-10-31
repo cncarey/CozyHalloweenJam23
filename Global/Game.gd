@@ -227,6 +227,14 @@ func tryRemovePumpkins(decrease) -> bool:
 signal noPumpkins()
 signal pumpkinsCountChanged(pumpkins)
 
+@onready var ControlSchema = 0:
+	set (value):
+		ControlSchema = value
+		controlSchemaChanged.emit(ControlSchema)
+	get:
+		return ControlSchema
+signal controlSchemaChanged(schema)
+
 @onready var CanPurchase = false:
 	set (value):
 		CanPurchase = value

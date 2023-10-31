@@ -13,7 +13,7 @@ func setTimeOfDay(tod):
 		Game.TimeOfDay.Day:
 			#get rid of anything that was made
 			for c in Temp.get_children():
-				c.queue_free()
+				c.call_deferred("queue_free")
 				
 			pass
 		Game.TimeOfDay.Night:
@@ -29,5 +29,5 @@ func setTimeOfDay(tod):
 				var _customer = npc.instantiate()
 				_customer.position = cp.position
 				_customer.isIdleOnly = true
-				Temp.add_child(_customer)
+				Temp.call_deferred("add_child", _customer)
 			pass

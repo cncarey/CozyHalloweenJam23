@@ -17,6 +17,8 @@ extends CanvasLayer
 @onready var sFxSlider: HSlider = $OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/SFxSlider
 
 @onready var DayNight : CheckBox = $OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/DayNght
+@onready var controlSchema : OptionButton = $OptionsContainer/VBoxContainer/HBoxContainer/VBoxContainer2/OptionButton
+
 signal pauseChanged(state)
 
 func _ready():
@@ -39,6 +41,7 @@ func _ready():
 		pass
 		
 	DayNight.button_pressed = Game.playNightAnimation
+	controlSchema.selected = Game.ControlSchema
 	
 		
 func _input(event):
@@ -120,3 +123,8 @@ func setDayNightAnimation(button_pressed: bool):
 	Game.playNightAnimation = button_pressed
 	pass # Replace with function body.
 
+
+
+func ControlSchemaSelected(index: int):
+	Game.ControlSchema = index
+	pass # Replace with function body.
